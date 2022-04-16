@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://measuringInstrumentsEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.arclab.web.screens.measuringinstruments">
+    <data>
+        <instance id="measuringInstrumentsDc"
+                  class="com.company.arclab.entity.client.dict.MeasuringInstruments">
+            <view extends="_local"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="measuringInstrumentsDc">
+            <column width="350px">
+                <textField id="characteristicNameField" property="characteristicName"/>
+                <textField id="serialNumberField" property="serialNumber"/>
+                <textField id="basicMetrologicalField" property="basicMetrological"/>
+                <dateField id="manufactureYearField" property="manufactureYear"/>
+                <textField id="certificateNumberField" property="certificateNumber"/>
+                <dateField id="certificateDateField" property="certificateDate"/>
+                <textField id="stateSystemNumberField" property="stateSystemNumber"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

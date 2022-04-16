@@ -1,0 +1,95 @@
+@import "../helium/helium";
+
+@mixin arclab_helium {
+  @include helium;
+  /* Basic */
+  --app-background-color: #EBEEEF;
+  --border-color: #DBDBDB;
+  /* --dim-color: #006CE0; */
+  --primary-color: #FE5000;
+  --primary-color_rgb: 254, 80, 0;
+  --secondary-color: #006CE0;
+  --secondary-color_rgb: 0, 108, 224;
+  --text-main-color: #444444;
+
+  /* Common */
+  --dim-color-shade-1: #005EC2;
+  --dim-color-shade-2: #0054AD;
+  --primary-color-shade-1: #E04300;
+  --primary-color-shade-2: #C73C00;
+  /* --primary-dim-color: #FF7E47; */
+  --secondary-color-shade-1: #005EC2;
+  --secondary-color-shade-2: #0054AD;
+  --secondary-dim-color: #3396FF;
+
+  --menubar-border-color: #FFFFFF;
+  --menubar-background-color: #FFFFFF;
+  --sidemenu-background-color: #EBEEEF;
+  --sidemenu-title-background-color: #EBEEEF;
+  --sidemenu-collapsible-collapse-button-background-color: #EBEEEF;
+  --sidemenu-text-color: #444444;
+
+  &.dark {
+    /* Common */
+    --sidemenu-text-color: #f2f2f2;
+    --menubar-border-color: #000000;
+    --menubar-background-color: #000000;
+    --sidemenu-background-color: #4d4d4d;
+    --sidemenu-title-background-color: #4d4d4d;
+    --sidemenu-collapsible-collapse-button-background-color: #4d4d4d;
+    --sidemenu-collapsible-controls-panel-background-color: #4d4d4d;
+  }
+
+  .v-table {
+    .v-table-row,
+    .v-table-row-odd {
+      &.error-transactions {
+        background: rgba(241, 169, 160, 0.3);
+        color: red;
+
+        .c-grouptable-group-cell-expander:before {
+          color: black;
+        }
+      }
+
+      &.manager-transactions {
+        color: blue;
+
+        .c-grouptable-group-cell-expander:before {
+          color: black;
+        }
+      }
+    }
+  }
+
+
+  .error-sign {
+    background-color: rgba(141, 169, 160, 0.3);
+    color: green;
+  }
+
+  .good-sign {
+    background-color: rgba(141, 169, 160, 0.3);
+    color: red;
+  }
+
+  .v-loading-indicator,
+  .v-loading-indicator-delay,
+  .v-loading-indicator-wait {
+    $spinner-size: 64px;
+
+    @include valo-spinner($size: $spinner-size, $thickness: 4px);
+
+    background: transparent;
+    z-index: 100000;
+
+    $offset: ceil($spinner-size/2);
+    top: calc(50% - $offset);
+    left: calc(50% - $offset);
+
+    &[style*="none"] {
+      @include transition(none);
+      width: $spinner-size !important;
+    }
+  }
+}

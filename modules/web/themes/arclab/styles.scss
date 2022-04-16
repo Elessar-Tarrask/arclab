@@ -1,0 +1,6 @@
+@import "arclab-defaults";
+@import "arclab";
+
+.arclab {
+  @include arclab;
+}

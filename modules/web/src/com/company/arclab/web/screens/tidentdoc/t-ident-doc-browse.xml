@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://TIdentDocBrowse.caption"
+        focusComponent="tIdentDocsTable"
+        messagesPack="com.company.arclab.web.screens.tidentdoc">
+    <data readOnly="true">
+        <collection id="tIdentDocsDc"
+                    class="com.company.arclab.entity.client.TIdentDoc">
+            <view extends="_local">
+                <property name="type" view="_minimal"/>
+                <property name="typeExt" view="_minimal"/>
+            </view>
+            <loader id="tIdentDocsDl">
+                <query>
+                    <![CDATA[select e from jcrm_TIdentDoc e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="tIdentDocsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="tIdentDocsTable"
+                dataLoader="tIdentDocsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="tIdentDocsTable"
+                    width="100%"
+                    dataContainer="tIdentDocsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="type"/>
+                <column id="typeExt"/>
+                <column id="typeExtCode"/>
+                <column id="number"/>
+                <column id="issueDate"/>
+                <column id="expirationDate"/>
+                <column id="issuer"/>
+                <column id="isDefault"/>
+                <column id="isArchival"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="tIdentDocsTable.create"/>
+                <button id="editBtn" action="tIdentDocsTable.edit"/>
+                <button id="removeBtn" action="tIdentDocsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

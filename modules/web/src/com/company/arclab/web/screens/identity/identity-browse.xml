@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://identityBrowse.caption"
+        focusComponent="identitiesTable"
+        messagesPack="com.company.arclab.web.screens.identity">
+    <data readOnly="true">
+        <collection id="identitiesDc"
+                    class="com.company.arclab.entity.client.Identity">
+            <view extends="_local">
+                <property name="registerDocs" view="_minimal">
+                    <property name="docType" view="_minimal"/>
+                    <property name="license" view="_minimal"/>
+                    <property name="tax" view="_minimal">
+                        <property name="code"/>
+                    </property>
+                    <property name="longname"/>
+                    <property name="firstRegDate"/>
+                    <property name="regDate"/>
+                    <property name="regOrf" view="_minimal"/>
+                    <property name="regCountry" view="_minimal"/>
+                    <property name="licenseNumber"/>
+                    <property name="licenseDate"/>
+                    <property name="licenseValidDate"/>
+                    <property name="licenseOrg"/>
+                    <property name="issueDate"/>
+                    <property name="validDate"/>
+                    <property name="issueOrg"/>
+                    <property name="code"/>
+                    <property name="nord"/>
+                    <property name="ser"/>
+                    <property name="num"/>
+                    <property name="dtFrom"/>
+                    <property name="dtTo"/>
+                    <property name="arcfl"/>
+                    <property name="org"/>
+                    <property name="regnum"/>
+                    <property name="regdt"/>
+                </property>
+                <property name="contactsAdresses" view="_minimal">
+                    <property name="addrSerialNumber"/>
+                    <property name="fulladdress"/>
+                    <property name="cityName"/>
+                    <property name="district" view="_minimal">
+                        <property name="katoCode"/>
+                    </property>
+                    <property name="locality" view="_minimal">
+                        <property name="katoCode"/>
+                    </property>
+                    <property name="streetName"/>
+                    <property name="zipCode"/>
+                    <property name="priznOsn"/>
+                </property>
+                <property name="phones" view="_minimal">
+                    <property name="phoneSerialNumber"/>
+                    <property name="contactName"/>
+                    <property name="contactType" view="_minimal"/>
+                    <property name="contactKind" view="_minimal"/>
+                    <property name="internalPhone"/>
+                    <property name="isMain"/>
+                    <property name="note"/>
+                    <property name="isAddedByContactCenter"/>
+                </property>
+                <property name="emails" view="_minimal">
+                    <property name="phoneSerialNumber"/>
+                    <property name="contactName"/>
+                    <property name="contactType" view="_minimal"/>
+                    <property name="contactKind" view="_minimal"/>
+                    <property name="internalPhone"/>
+                    <property name="isMain"/>
+                    <property name="note"/>
+                    <property name="isAddedByContactCenter"/>
+                </property>
+                <property name="identDocs" view="_minimal">
+                    <property name="typeExt" view="_minimal"/>
+                    <property name="typeExtCode"/>
+                    <property name="issueDate"/>
+                    <property name="expirationDate"/>
+                    <property name="issuer"/>
+                    <property name="isDefault"/>
+                    <property name="isArchival"/>
+                </property>
+            </view>
+            <loader id="identitiesDl">
+                <query>
+                    <![CDATA[select e from arclab_Identity e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="identitiesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="identitiesTable"
+                dataLoader="identitiesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="identitiesTable"
+                    width="100%"
+                    dataContainer="identitiesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="iinBin"/>
+                <column id="fullName"/>
+                <column id="clientType"/>
+                <column id="status"/>
+                <column id="regDate"/>
+                <column id="name"/>
+                <column id="middleName"/>
+                <column id="lastName"/>
+                <column id="birthDate"/>
+                <column id="sex"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="identitiesTable.create"/>
+                <button id="editBtn" action="identitiesTable.edit"/>
+                <button id="removeBtn" action="identitiesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

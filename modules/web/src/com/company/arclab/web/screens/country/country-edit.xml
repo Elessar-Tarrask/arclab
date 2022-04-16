@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://countryEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.arclab.web.screens.country">
+    <data>
+        <instance id="countryDc"
+                  class="com.company.arclab.entity.kato.Country">
+            <view extends="_local"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="countryDc">
+            <column width="350px">
+                <textField id="codeField" property="code"/>
+                <textField id="codeWay4Field" property="codeWay4"/>
+                <textField id="countryNameField" property="countryName"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

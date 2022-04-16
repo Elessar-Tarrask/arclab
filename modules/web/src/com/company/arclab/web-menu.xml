@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+
+    <item id="tasks" caption="mainMsg://menu_config.jcrm_TaskApplication.browse" icon="TASKS"/>
+    <item icon="font-icon:USER" screen="arclab_Identity.browse" caption="mainMsg://menu_config.arclab_Identity.browse"/>
+    <menu id="acts" icon="font-icon:CERTIFICATE">
+
+        <item screen="jcrm_Application.browse" caption="mainMsg://menu_config.jcrm_Application.browse"/>
+    </menu>
+    <menu id="contracts" icon="font-icon:FILE_TEXT_O">
+
+        <item screen="jcrm_DocFormed.browse" caption="mainMsg://menu_config.jcrm_DocFormed.browse"/>
+    </menu>
+    <menu id="incomingcall" caption="mainMsg://menu_config.contactcenter" icon="PHONE">
+        <item screen="arclab_Incomingcall" caption="mainMsg://menu_config.incomingcall"/>
+        <item screen="arclab_MissedCallBrowse" caption="mainMsg://menu_config.missedcall"/>
+        <item screen="jcrm_DContactKind.browse" caption="mainMsg://menu_config.jcrm_DContactKind.browse"/>
+    </menu>
+    <menu id="dictionary" icon="BOOK">
+        <item screen="arclab_MeasuringInstruments.browse"
+              caption="mainMsg://menu_config.arclab_MeasuringInstruments.browse"/>
+        <menu id="dKato" icon="font-icon:ADDRESS_BOOK">
+            <item screen="jcrm_DKato.browse" caption="mainMsg://menu_config.jcrm_DKato.browse"/>
+            <item screen="jcrm_DAddressType.browse" caption="mainMsg://menu_config.jcrm_DAddressType.browse"/>
+            <item screen="jcrm_Country.browse" caption="mainMsg://menu_config.jcrm_Country.browse"/>
+            <item screen="jcrm_City.browse" caption="mainMsg://menu_config.jcrm_City.browse"/>
+        </menu>
+        <item screen="jcrm_TIdentDoc.browse" caption="mainMsg://menu_config.jcrm_TIdentDoc.browse"/>
+    </menu>
+    <menu id="dashboard" icon="PIE_CHART">
+        <item screen="dashboard$PersistentDashboard.browse" caption="Admin console"/>
+        <item screen="dashboard$WidgetTemplate.browse"/>
+    </menu>
+    <menu id="reports" icon="LINE_CHART">
+        <item id="report$Report.browse"/>
+        <item id="report$ReportGroup.browse"/>
+        <item id="report$Report.run"/>
+        <item id="report$showChart"/>
+        <item id="report$showReportTable"/>
+        <item id="report$showPivotTable"/>
+    </menu>
+    <menu id="bproc" icon="HANDSHAKE_O" insertAfter="reports">
+        <item screen="bproc_StartProcessScreen"/>
+        <item screen="bproc_MyTasks.browse"/>
+        <separator/>
+        <item screen="bproc_BpmnModelerScreen"/>
+        <item screen="bproc_ProcessDefinitionData.browse"/>
+        <item screen="bproc_ProcessInstanceData.browse"/>
+        <item screen="bproc_UserGroup.browse"/>
+        <item screen="bproc_AllTasks.browse"/>
+        <item screen="bproc_DmnDecisionTableBrowse"/>
+        <item screen="bproc_DecisionTableModelerScreen"/>
+    </menu>
+    <menu id="administration" icon="GEARS">
+        <item id="sec$User.browse"/>
+        <item id="sec$Group.browse"/>
+        <item id="sec$Role.browse"/>
+        <separator/>
+        <item id="sys$Category.browse"/>
+        <item id="sec$UserSessionEntity.browse"/>
+        <item id="sys$LockInfo.browse"/>
+        <item id="sys$FileDescriptor.browse"/>
+        <item id="sys$ScheduledTask.browse"/>
+        <item id="entityRestore"/>
+        <item id="entityInspector.browse"/>
+        <item id="appProperties"/>
+        <item id="jmxConsole"/>
+        <separator/>
+        <item id="entityLog"/>
+        <item id="sec$SessionLogEntry.browse"/>
+        <item id="sys$SendingMessage.browse"/>
+        <item id="serverLog"/>
+        <item id="screenProfiler"/>
+        <item id="performanceStatistics"/>
+    </menu>
+    <menu id="help" icon="INFO_CIRCLE">
+        <item id="aboutWindow" openType="DIALOG"/>
+        <item class="com.haulmont.cuba.web.app.domain.DomainProvider" id="printDomain"/>
+        <separator/>
+        <item id="settings"/>
+        <item screen="helium_ThemeSettingsScreen"/>
+    </menu>
+</menu-config>

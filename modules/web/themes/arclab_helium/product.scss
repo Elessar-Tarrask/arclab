@@ -1,0 +1,36 @@
+.product-card-navigation-container {
+    width: 222px;
+    height: 778px;
+    background: #FFFFFF;
+    border-radius: 4px;
+    padding: 25px 0 0;
+}
+.product-card-navigation__header {
+    display: flex;
+    justify-content: center;
+    .actions {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            margin-left: 30.5px;
+            margin-right: 23.5px;
+            margin-top: 4px;
+    }
+}
+
+.form-group>label {
+    top: 38px;
+    left: 15px;
+    position: relative;
+    background-color: white;
+    padding: 0px 5px 0px 5px;
+    font-size: 1.1em;
+    transition: 0.2s;
+    pointer-events:none;
+  }
+  
+  .form-group.label-animate>label {
+    top: 18px !important;
+    left: 16px !important;
+    font-size: 0.9em;
+  }

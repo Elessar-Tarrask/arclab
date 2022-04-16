@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://countryBrowse.caption"
+        focusComponent="countriesTable"
+        messagesPack="com.company.arclab.web.screens.country">
+    <data readOnly="true">
+        <collection id="countriesDc"
+                    class="com.company.arclab.entity.kato.Country">
+            <view extends="_local"/>
+            <loader id="countriesDl">
+                <query>
+                    <![CDATA[select e from jcrm_Country e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="countriesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="countriesTable"
+                dataLoader="countriesDl">
+            <properties include=".*"/>
+        </filter>
+        <table id="countriesTable"
+               width="100%"
+               dataContainer="countriesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="code"/>
+                <column id="codeWay4"/>
+                <column id="countryName"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="countriesTable.create"/>
+                <button id="editBtn" action="countriesTable.edit"/>
+                <button id="removeBtn" action="countriesTable.remove"/>
+            </buttonsPanel>
+        </table>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

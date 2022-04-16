@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="arclab" transaction-type="RESOURCE_LOCAL">
+        <class>com.company.arclab.entity.client.Identity</class>
+        <class>com.company.arclab.entity.client.dict.DContactKind</class>
+        <class>com.company.arclab.entity.client.dict.DContactsType</class>
+        <class>com.company.arclab.entity.client.dict.DIdDoc</class>
+        <class>com.company.arclab.entity.client.dict.DLicense</class>
+        <class>com.company.arclab.entity.client.dict.DRegDocType</class>
+        <class>com.company.arclab.entity.client.dict.DRegOrg</class>
+        <class>com.company.arclab.entity.client.dict.DTax</class>
+        <class>com.company.arclab.entity.client.dict.DTypeExt</class>
+        <class>com.company.arclab.entity.client.TClientAddress</class>
+        <class>com.company.arclab.entity.client.TClientEmail</class>
+        <class>com.company.arclab.entity.client.TClientRegisterDoc</class>
+        <class>com.company.arclab.entity.client.TContactPhone</class>
+        <class>com.company.arclab.entity.client.TIdentDoc</class>
+        <class>com.company.arclab.entity.kato.City</class>
+        <class>com.company.arclab.entity.kato.Country</class>
+        <class>com.company.arclab.entity.kato.DAddressType</class>
+        <class>com.company.arclab.entity.kato.DKato</class>
+        <class>com.company.arclab.entity.client.dict.MeasuringInstruments</class>
+        <class>com.company.arclab.entity.client.TManager</class>
+        <class>com.company.arclab.entity.client.TClientDigitalSign</class>
+        <class>com.company.arclab.entity.client.Application</class>
+        <class>com.company.arclab.entity.client.DocFormed</class>
+    </persistence-unit>
+</persistence>

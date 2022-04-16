@@ -1,0 +1,240 @@
+@import "arclab_helium-defaults";
+@import "arclab_helium";
+@import "client";
+@import "product";
+
+.arclab_helium {
+  @include arclab_helium;
+}
+.arclab_helium .c-sidemenu-layout.v-csslayout .c-workarea {
+    box-shadow: none;
+}
+.arclab_helium .c-rightmenu-panel {
+    z-index: 10;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 42px;
+    max-width: 42px;
+    -webkit-transition: width .4s ease-in-out;
+    -moz-transition: width .4s ease-in-out;
+    transition: width .4s ease-in-out;
+    /* float: right; */
+    position: relative;
+    right: 0;
+    min-height: 100vh;
+}
+
+.arclab_helium .c-app-menubar {
+    margin-right: 42px;
+    margin-left: 40px;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 0;
+    white-space: nowrap;
+    margin-top: 7px;
+    border-radius: 2px;
+    position: relative;
+    top: 0;
+}
+.v-slot-c-sidemenu-layout {
+    height: 100% !important;
+}
+.v-slot-c-app-menubar {
+    position: absolute;
+    top: 0;
+    height: 0 !important;
+    width: 100%;
+}
+
+.arclab_helium .v-tabsheet.c-main-tabsheet.framed.padded-tabbar>.v-tabsheet-tabcontainer {
+    border-radius: 2px;
+}
+
+.v-slot v-slot-icon {
+    height: 28px !important;
+    display: flex;
+    justify-content: center;
+}
+
+.upspace {
+    margin-top: 11px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.v-layout.v-vertical>.v-expand {
+width: auto;
+}
+
+.arclab_helium .c-disclaimer-panel {
+    z-index: 10;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    -webkit-transition: width .4s ease-in-out;
+    -moz-transition: width .4s ease-in-out;
+    transition: width .4s ease-in-out;
+    /* float: right; */
+    position: relative;
+}
+
+.arclab_helium .c-headline-container {
+    display: block;
+    flex-shrink: 0;
+    min-height: 34px;
+    padding-top: 8px;
+    white-space: nowrap;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(244,244,244,1) 100%);
+    margin: 0 -12px 7px -12px;
+    width: -webkit-fill-available !important;
+    padding-left: 10px;
+}
+
+.arclab_helium .c-breadcrumbs-separator {
+}
+
+.v-grid {
+  .v-grid-cell.attrBold {
+     font-weight: bold;
+  }
+}
+
+//.v-table-cell-content.
+.v-table-row-cs.blocked-account-row:not(.v-selected) {
+    color: red;
+    font-weight: bold;
+}
+
+.v-table {
+    .nonactive-client {
+        color: red;
+    }
+}
+
+.alert-row {
+    // background-color: red !important;
+    font-weight: bold;
+    color: red;
+}
+
+.arclab_helium .c-login-main-layout {
+    background: white;
+}
+.arclab_helium .c-login-panel {
+    background: #F6F7F8;
+    border-radius: 40px;
+}
+.arclab_helium .c-login-username, .main .c-login-password {
+    background: #FFFFFF;
+    border: 1px solid #D6DADF;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+.arclab_helium .c-sidemenu-layout.v-csslayout .c-sidemenu-panel {
+    background: white;
+    box-shadow: 0px 1px 3px rgba(54, 74, 99, 0.15);
+}
+.arclab_helium .c-sidemenu-title {
+    background: white;
+}
+.arclab_helium .c-sidemenu-layout.v-csslayout .c-sidemenu-panel .c-sidemenu .c-sidemenu-submenu.c-sidemenu-submenu-open {
+    background: white;
+}
+.arclab_helium .c-sidemenu-panel .c-sidemenu-item, .main .c-sidemenu-panel .c-sidemenu-item-header {
+    color: #444444 !important;
+    font-weight: normal;
+}
+.arclab_helium .c-sidemenu-panel .c-sidemenu-item-header {
+    position: relative;
+}
+.arclab_helium .c-sidemenu-panel .c-sidemenu-item-header:before {
+    content: '';
+    position: absolute;
+    right: 12px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    transform: rotate(45deg);
+    transition: .3s;
+}
+.arclab_helium .c-sidemenu-panel .c-sidemenu-item-header.c-sidemenu-item-header-open:before {
+    content: "";
+    transform: rotate(-135deg);
+}
+
+.arclab_helium .c-groupbox-caption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row-reverse;
+}
+.arclab_helium .c-groupbox.collapsed {
+    background: white;
+    border: 1px solid #DCE0E5;
+}
+.v-tabsheet-tabsheetpanel, .main .c-sidemenu-layout.v-csslayout .c-main-tabsheet > .v-tabsheet-content > .v-tabsheet-tabsheetpanel {
+    background: #F5F6FA;
+}
+
+.arclab_helium .v-verticallayout-card {
+    padding: 8px;
+}
+
+
+.arclab_helium .newClass-link-blue, .main .newClass-link-dark {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+}
+.arclab_helium .newClass-link-blue {
+    color: #1890F3;
+}
+.arclab_helium .newClass-link-dark {
+    text-decoration-line: underline;
+    color: #444444;
+}
+.arclab_helium .newClass-title-14 {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #444444;
+    margin-bottom: 8px;
+}
+.arclab_helium .newClass-span-11 {
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+    color: #444444;
+}
+.arclab_helium .newClass-subtitle-14 {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #444444;
+    margin-bottom: 8px;
+}
+.arclab_helium .newClass-time-start, .main .newClass-time-end {
+    font-weight: 400;
+    font-size: 12px;
+    color: #444444;
+}
+.arclab_helium .newClass-time-start span {
+    color: #25B915;
+}
+.arclab_helium .newClass-time-end span {
+    color: #969696;
+}
+.arclab_helium .c-groupbox-content {
+    padding-left: 16px;
+}

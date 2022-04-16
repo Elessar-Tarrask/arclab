@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://applicationBrowse.caption"
+        focusComponent="applicationsTable"
+        messagesPack="com.company.arclab.web.screens.application">
+    <data readOnly="true">
+        <collection id="applicationsDc"
+                    class="com.company.arclab.entity.client.Application">
+            <view extends="_local"/>
+            <loader id="applicationsDl">
+                <query>
+                    <![CDATA[select e from jcrm_Application e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="applicationsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="applicationsTable"
+                dataLoader="applicationsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="applicationsTable"
+                    width="100%"
+                    dataContainer="applicationsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="isJB"/>
+                <column id="reqId"/>
+                <column id="procId"/>
+                <column id="info"/>
+                <column id="applicationStatus"/>
+                <column id="iinBin"/>
+                <column id="fullName"/>
+                <column id="dateOfCompletion"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="applicationsTable.create"/>
+                <button id="editBtn" action="applicationsTable.edit"/>
+                <button id="removeBtn" action="applicationsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

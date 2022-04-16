@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://TIdentDocEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.arclab.web.screens.tidentdoc">
+    <data>
+        <instance id="tIdentDocDc"
+                  class="com.company.arclab.entity.client.TIdentDoc">
+            <view extends="_local">
+                <property name="type" view="_minimal"/>
+                <property name="typeExt" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="tIdentDocDc">
+            <column width="350px">
+                <pickerField id="typeField" property="type">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <pickerField id="typeExtField" property="typeExt">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="typeExtCodeField" property="typeExtCode"/>
+                <textField id="numberField" property="number"/>
+                <dateField id="issueDateField" property="issueDate"/>
+                <dateField id="expirationDateField" property="expirationDate"/>
+                <textField id="issuerField" property="issuer"/>
+                <checkBox id="isDefaultField" property="isDefault"/>
+                <checkBox id="isArchivalField" property="isArchival"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

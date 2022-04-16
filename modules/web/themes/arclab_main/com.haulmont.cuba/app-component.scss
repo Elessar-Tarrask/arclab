@@ -1,0 +1,5 @@
+@import "../arclab_main";
+
+@mixin com_haulmont_cuba {
+  @include arclab_main;
+}

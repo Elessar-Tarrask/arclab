@@ -1,0 +1,5 @@
+@import "../arclab_helium";
+
+@mixin com_haulmont_cuba {
+  @include arclab_helium;
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://DKatoBrowse.caption"
+        focusComponent="dKatoesTable"
+        messagesPack="com.company.arclab.web.screens.dkato">
+    <data readOnly="true">
+        <collection id="dKatoesDc"
+                    class="com.company.arclab.entity.kato.DKato">
+            <view extends="_local"/>
+            <loader id="dKatoesDl">
+                <query>
+                    <![CDATA[select e from jcrm_DKato e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="dKatoesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="dKatoesTable"
+                dataLoader="dKatoesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="dKatoesTable"
+                    width="100%"
+                    dataContainer="dKatoesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="katoCode"/>
+                <column id="katoName"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="dKatoesTable.create"/>
+                <button id="editBtn" action="dKatoesTable.edit"/>
+                <button id="removeBtn" action="dKatoesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>
