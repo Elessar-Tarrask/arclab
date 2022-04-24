@@ -1,10 +1,13 @@
-package com.company.arclab.entity.client;
+package com.company.arclab.entity.application;
 
+import com.company.arclab.entity.client.DocFormed;
+import com.company.arclab.entity.client.TManager;
 import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.Listeners;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.entity.annotation.PublishEntityChangedEvents;
 import com.haulmont.cuba.core.global.DeletePolicy;
 
 import javax.persistence.CascadeType;
@@ -23,17 +26,17 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
+@PublishEntityChangedEvents
 @DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "JCRM_APPLICATION", uniqueConstraints = {
         @UniqueConstraint(name = "IDX_JCRM_APPLICATION_ID_UNQ", columnNames = {"ID"})
 })
 @Entity(name = "jcrm_Application")
-@NamePattern("%s  / %s|reqId,product")
+@NamePattern("%s  / %s|reqId")
 @Listeners("jcrm_ApplicationEntityListener")
 public class Application extends StandardEntity {
     private static final long serialVersionUID = -991923662665880784L;
@@ -44,10 +47,6 @@ public class Application extends StandardEntity {
 
     @Column(name = "NAME")
     protected String name;
-
-    @NotNull
-    @Column(name = "IS_JB", nullable = false)
-    private Boolean isJB = false;
 
     public String getName() {
         return name;
@@ -92,14 +91,6 @@ public class Application extends StandardEntity {
     @Temporal(TemporalType.DATE)
     @Column(name = "DATE_OF_COMPLETION")
     private Date dateOfCompletion;
-
-    public Boolean getIsJB() {
-        return isJB;
-    }
-
-    public void setIsJB(Boolean isJB) {
-        this.isJB = isJB;
-    }
 
     public Date getDateOfCompletion() {
         return dateOfCompletion;

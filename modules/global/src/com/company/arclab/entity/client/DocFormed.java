@@ -1,5 +1,6 @@
 package com.company.arclab.entity.client;
 
+import com.company.arclab.entity.application.Application;
 import com.company.arclab.entity.application.EDocStatus;
 import com.haulmont.cuba.core.entity.FileDescriptor;
 import com.haulmont.cuba.core.entity.StandardEntity;

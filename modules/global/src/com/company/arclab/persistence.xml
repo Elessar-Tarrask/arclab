@@ -22,7 +22,8 @@
         <class>com.company.arclab.entity.client.dict.MeasuringInstruments</class>
         <class>com.company.arclab.entity.client.TManager</class>
         <class>com.company.arclab.entity.client.TClientDigitalSign</class>
-        <class>com.company.arclab.entity.client.Application</class>
+        <class>com.company.arclab.entity.application.Application</class>
         <class>com.company.arclab.entity.client.DocFormed</class>
+        <class>com.company.arclab.entity.application.IdentityApplication</class>
     </persistence-unit>
 </persistence>

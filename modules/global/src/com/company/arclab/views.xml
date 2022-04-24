@@ -1,4 +1,95 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
 
+    <view entity="arclab_Identity" name="identity-view" extends="_local">
+        <property name="registerDocs" view="_minimal">
+            <property name="docType" view="_minimal"/>
+            <property name="license" view="_minimal"/>
+            <property name="tax" view="_minimal">
+                <property name="code"/>
+            </property>
+            <property name="longname"/>
+            <property name="firstRegDate"/>
+            <property name="regDate"/>
+            <property name="regOrf" view="_minimal"/>
+            <property name="regCountry" view="_minimal"/>
+            <property name="licenseNumber"/>
+            <property name="licenseDate"/>
+            <property name="licenseValidDate"/>
+            <property name="licenseOrg"/>
+            <property name="issueDate"/>
+            <property name="validDate"/>
+            <property name="issueOrg"/>
+            <property name="code"/>
+            <property name="nord"/>
+            <property name="ser"/>
+            <property name="num"/>
+            <property name="dtFrom"/>
+            <property name="dtTo"/>
+            <property name="arcfl"/>
+            <property name="org"/>
+            <property name="regnum"/>
+            <property name="regdt"/>
+        </property>
+        <property name="contactsAdresses" view="_minimal">
+            <property name="addrSerialNumber"/>
+            <property name="fulladdress"/>
+            <property name="cityName"/>
+            <property name="district" view="_minimal">
+                <property name="katoCode"/>
+            </property>
+            <property name="locality" view="_minimal">
+                <property name="katoCode"/>
+            </property>
+            <property name="streetName"/>
+            <property name="zipCode"/>
+            <property name="priznOsn"/>
+        </property>
+        <property name="phones" view="_minimal">
+            <property name="phoneSerialNumber"/>
+            <property name="contactName"/>
+            <property name="contactType" view="_minimal"/>
+            <property name="contactKind" view="_minimal"/>
+            <property name="internalPhone"/>
+            <property name="isMain"/>
+            <property name="note"/>
+            <property name="isAddedByContactCenter"/>
+        </property>
+        <property name="emails" view="_minimal">
+            <property name="phoneSerialNumber"/>
+            <property name="contactName"/>
+            <property name="contactType" view="_minimal"/>
+            <property name="contactKind" view="_minimal"/>
+            <property name="internalPhone"/>
+            <property name="isMain"/>
+            <property name="note"/>
+            <property name="isAddedByContactCenter"/>
+        </property>
+        <property name="identDocs" view="_minimal">
+            <property name="typeExt" view="_minimal"/>
+            <property name="typeExtCode"/>
+            <property name="issueDate"/>
+            <property name="expirationDate"/>
+            <property name="issuer"/>
+            <property name="isDefault"/>
+            <property name="isArchival"/>
+        </property>
+    </view>
+    <view entity="arclab_IdentityApplication" name="identityApplication-view" extends="_local">
+        <property name="manager" view="_minimal">
+            <property name="managerNetworkName"/>
+            <property name="employeeId"/>
+            <property name="phone"/>
+            <property name="digitalSign"/>
+        </property>
+        <property name="formedDocs" view="_minimal">
+            <property name="application" view="_minimal">
+                <property name="name"/>
+            </property>
+            <property name="docType"/>
+            <property name="docFile" view="_minimal"/>
+            <property name="docStatus"/>
+        </property>
+        <property name="identity" view="identity-view"/>
+    </view>
 </views>

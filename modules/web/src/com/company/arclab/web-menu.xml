@@ -6,6 +6,10 @@
     <menu id="acts" icon="font-icon:CERTIFICATE">
 
         <item screen="jcrm_Application.browse" caption="mainMsg://menu_config.jcrm_Application.browse"/>
+        <item screen="arclab_IdentityApplication.browse"
+              caption="mainMsg://menu_config.arclab_IdentityApplication.browse"/>
+        <item screen="arclab_ClientApplicationManagerTask"
+              caption="mainMsg://menu_config.arclab_ClientApplicationManagerTask"/>
     </menu>
     <menu id="contracts" icon="font-icon:FILE_TEXT_O">
 
