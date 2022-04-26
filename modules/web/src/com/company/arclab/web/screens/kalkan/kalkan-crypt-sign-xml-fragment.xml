@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://schemas.haulmont.com/cuba/screen/fragment.xsd">
+    <data>
+        <instance id="edsRegistryDc"
+                  class="com.company.arclab.entity.kalkan.EdsRegistry">
+            <view extends="_local"/>
+            <loader/>
+        </instance>
+        <instance id="digitalSignDc" class="com.company.arclab.entity.client.TClientDigitalSign"/>
+        <!--        <instance id="tOfficerDc"-->
+        <!--                  class="com.company.arclab.entity.client.TManager"-->
+        <!--                  view="_local">-->
+        <!--            <loader/>-->
+        <!--            <instance id="digitalSignDc" property="digitalSign"/>-->
+        <!--        </instance>-->
+    </data>
+    <facets>
+        <screen id="digitalSignScreen"
+                openMode="DIALOG"
+                screenId="arclab_DigitalSignatoryInfo"
+                screenClass="com.company.arclab.web.screens.kalkan.DigitalSignatoryInfo"/>
+    </facets>
+    <layout>
+        <scrollBox>
+            <jsComponent id="ncaLayerShowJs"
+                         initFunctionName="nca_layer_js_component_clicker">
+                <dependencies>
+                    <!--                    <dependency path="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"/>-->
+                    <!--                    <dependency path="vaadin://jquery.blockUI.min.js"/>-->
+                    <dependency path="vaadin://nca-layer-connectorJS.js"/>
+                </dependencies>
+            </jsComponent>
+        </scrollBox>
+    </layout>
+</fragment>

@@ -2,6 +2,9 @@
 buildscript {
     ext.cubaVersion = '7.2.18'
     repositories {
+        flatDir {
+            dirs "${project.rootDir}/libs"
+        }
         maven {
             url 'https://repo.cuba-platform.com/content/groups/work'
             credentials {
@@ -47,6 +50,7 @@ dependencies {
     appComponent('com.haulmont.addon.dashboard:dashboard-global:3.2.3')
     appComponent("com.haulmont.reports:reports-global:$cubaVersion")
     appComponent('com.haulmont.addon.bproc:bproc-global:1.2.1')
+    appComponent('com.haulmont.addon.globalevents:cubaglevt-global:0.6.1')
 }
 
 def postgres = 'org.postgresql:postgresql:42.2.9'
@@ -82,6 +86,9 @@ configure(globalModule) {
             runtime('javax.xml.bind:jaxb-api:2.3.1')
             runtime('org.glassfish.jaxb:jaxb-runtime:2.3.1')
         }
+        compile(name: 'kalkancrypt_xmldsig-0.3')
+        compile(name: 'kalkancrypt-0.1.1')
+        compile(name: 'xmlsec-1.5.8')
     }
 
     entitiesEnhancing {

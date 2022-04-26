@@ -92,4 +92,20 @@
         </property>
         <property name="identity" view="identity-view"/>
     </view>
+    <view entity="jcrm_Application" name="application-view" extends="_local">
+        <property name="manager" view="_minimal"/>
+        <property name="formedDocs" view="_minimal">
+            <property name="docType"/>
+            <property name="docFile" view="_minimal"/>
+            <property name="docStatus"/>
+        </property>
+    </view>
+    <view entity="arclab_TManager" name="tManager-view" extends="_local"/>
+    <view entity="arclab_EdsRegistry" name="edsRegistry-view" extends="_local">
+        <property name="fileToSign" view="_minimal"/>
+        <property name="fileCheckSum"/>
+        <property name="currentUser" view="_minimal"/>
+        <property name="signResult"/>
+        <property name="signErrorMessage"/>
+    </view>
 </views>

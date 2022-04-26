@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://createClient.caption"
+        messagesPack="com.company.arclab.web.screens.application">
+    <dialogMode height="400"
+                width="600"
+                modal="true"
+                forceDialog="true"/>
+    <layout>
+        <vbox id="basicInfoVBox" spacing="true">
+            <textField id="iinField" required="true" maxLength="12" caption="msg://iinBin" textChangeTimeout="100"
+                       textChangeEventMode="TIMEOUT"/>
+            <!--            <maskedField required="true" id="iinBinField" mask="############" caption="msg://iinBin" valueMode="masked" />-->
+            <textField id="clientFullnameField" caption="msg://clientFullname" width="100%"/>
+            <textField id="hidden" visible="false"/>
+            <buttonsPanel id="createButtonPanel" spacing="true">
+                <button id="createButton" caption="msg://searchClientButton"/>
+            </buttonsPanel>
+
+            <vbox id="progressBar" visible="false">
+                <progressBar align="MIDDLE_CENTER" width="100%" indeterminate="true"
+                             stylename="indeterminate-circle"/>
+                <label value="Идет загрузка данных из Гос.баз" stylename="bold"
+                       align="MIDDLE_CENTER"/>
+            </vbox>
+        </vbox>
+    </layout>
+</window>

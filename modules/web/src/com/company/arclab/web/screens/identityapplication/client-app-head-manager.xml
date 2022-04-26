@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://clientAppHeadManager.caption"
+        messagesPack="com.company.arclab.web.screens.identityapplication">
+    <data>
+        <instance id="identityApplicationDc"
+                  class="com.company.arclab.entity.application.IdentityApplication">
+            <instance id="identityDc" property="identity"/>
+            <view extends="identityApplication-view"/>
+            <loader/>
+            <collection id="formedDocsDc" property="formedDocs"/>
+        </instance>
+    </data>
+    <layout spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <hbox>
+                <form id="form" dataContainer="identityApplicationDc">
+                    <column width="350px">
+                        <pickerField id="managerField" property="manager" editable="false">
+                            <actions>
+                                <action id="lookup" type="picker_lookup"/>
+                                <action id="clear" type="picker_clear"/>
+                            </actions>
+                        </pickerField>
+                        <textField id="reqIdField" property="reqId"/>
+                        <textArea id="infoField" property="info" rows="5"/>
+                        <textField id="applicationStatusField" property="applicationStatus"/>
+                        <dateField id="dateOfCompletionField" property="dateOfCompletion"/>
+                    </column>
+                </form>
+            </hbox>
+            <buttonsPanel id="tempSaveBtnPnl">
+                <button id="saveTemp" caption="Сохранить и выйти" primary="true"/>
+            </buttonsPanel>
+            <tabSheet id="mainTabSheet" stylename="padded-tabbar">
+                <tab id="clientDataTab" caption="Клиент" spacing="true"
+                     margin="true,false,false,false">
+                    <tabSheet id="clientTabs" stylename="padded-tabbar">
+                        <tab id="generalDataTab" caption="Общие данные" spacing="true">
+                            <form id="basicInfoForm" dataContainer="identityDc">
+                                <column width="350px">
+                                    <textField id="iinBinField" property="iinBin"/>
+                                    <textField id="fullNameField" property="fullName"/>
+                                    <lookupField id="clientTypeField" property="clientType"/>
+                                    <lookupField id="statusField" property="status"/>
+                                    <dateField id="regDateField" property="regDate"/>
+                                    <textField id="nameField" property="name"/>
+                                    <textField id="middleNameField" property="middleName"/>
+                                    <textField id="lastNameField" property="lastName"/>
+                                    <dateField id="birthDateField" property="birthDate"/>
+                                    <lookupField id="sexField" property="sex"/>
+                                </column>
+                            </form>
+                        </tab>
+                    </tabSheet>
+                </tab>
+                <tab id="formedDocsTab">
+                    <groupBox id="formedDocsBox"
+                              caption="msg://kz.almanit.jcrm.entity.base/IdentityApplication.formedDocs">
+                        <table id="formedDocsTable" dataContainer="formedDocsDc" width="100%" height="200px">
+                            <actions>
+                                <action id="create" type="create"/>
+                                <action id="edit" type="edit"/>
+                                <action id="remove" type="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="application"/>
+                                <column id="docType"/>
+                                <column id="docFile"/>
+                            </columns>
+                            <buttonsPanel>
+                                <button action="formedDocsTable.create"/>
+                                <button action="formedDocsTable.edit"/>
+                                <button action="formedDocsTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+            </tabSheet>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <textArea id="finComment" caption="msg://finComment" width="80%"/>
+            <buttonsPanel>
+                <button id="rework" caption="msg://rework"/>
+                <button id="Accept" caption="msg://Accept"/>
+            </buttonsPanel>
+        </hbox>
+    </layout>
+</window>

@@ -7,5 +7,17 @@
     <context:component-scan base-package="com.company.arclab"/>
     
     <gui:screens base-packages="com.company.arclab.web"/>
+    <bean id="arclab_proxyCreator" class="com.haulmont.cuba.web.sys.remoting.WebRemoteProxyBeanCreator">
+        <property name="serverSelector" ref="cuba_ServerSelector"/>
+        <property name="remoteServices">
+            <map>
+                <entry key="arclab_ClientSearchService" value="com.company.arclab.service.ClientSearchService"/>
+                <entry key="arclab_KalkanSignVerifyService" value="com.company.arclab.service.KalkanSignVerifyService"/>
+                <entry key="arclab_EdsService" value="com.company.arclab.service.EdsService"/>
+                <entry key="arclab_ClientCreateService" value="com.company.arclab.service.ClientCreateService"/>
+                <entry key="arclab_BPMNService" value="com.company.arclab.service.BPMNService"/>
+            </map>
+        </property>
+    </bean>
 
 </beans>

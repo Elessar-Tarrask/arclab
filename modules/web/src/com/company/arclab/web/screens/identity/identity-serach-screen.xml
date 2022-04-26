@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://identitySerachScreen.caption"
+        messagesPack="com.company.arclab.web.screens.identity">
+    <data>
+        <collection id="resultClientDc"
+                    class="com.company.arclab.entity.client.Identity"
+                    view="identity-view">
+            <loader id="resultDl" maxResults="20">
+                <query>
+                    <![CDATA[select e from arclab_Identity e where e.status = 'Active']]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="searchtClientDc"
+                    class="com.company.arclab.entity.client.Identity"
+                    view="identity-view">
+            <loader id="searchDl" maxResults="1">
+                <query>
+                    <![CDATA[select e from arclab_Identity e where e.status = 'Active']]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <layout>
+        <vbox spacing="true">
+            <label id="tabLabel" value="Поиск Заказчика"/>
+            <tabSheet id="mainTab">
+                <tab id="searchTab" caption="Поиск Заказчика" spacing="true"
+                     margin="true,false,false,false">
+                    <vbox spacing="true">
+                        <vbox spacing="true">
+                            <label value="Поиск по Наименованию" id="byName"/>
+                            <suggestionField id="searchByName" stylename="large" width="600px"/>
+                            <label value="Поиск по иин" id="iinBinLabel"/>
+                            <suggestionField id="searchIinBin" stylename="large" width="600px"/>
+                        </vbox>
+
+                        <buttonsPanel id="searchButtonPanel">
+                            <button id="searchButton" caption="Поиск Заказчика" stylename="large"/>
+                            <button id="clrButton" caption="Очистить" stylename="large"/>
+                            <button id="addClientButtonSearchForm" invoke="addClientButtonClick"
+                                    caption="Добавить заказчика"
+                                    stylename="large" visible="false"/>
+                        </buttonsPanel>
+                        <groupTable id="searchResultTable" visible="false"
+                                    dataContainer="searchtClientDc" width="100%" contextMenuEnabled="false"
+                                    columnControlVisible="false" reorderingAllowed="false" sortable="false">
+                            <actions>
+                                <action id="view" type="view"></action>
+                            </actions>
+                            <columns>
+                                <column id="fullName"/>
+                                <column id="status"/>
+                                <column id="iinBin"/>
+                                <column id="clientType"/>
+                                <column id="regDate"/>
+                            </columns>
+                            <rows/>
+                        </groupTable>
+                    </vbox>
+                </tab>
+                <tab id="clientsListTab" caption="Заказчики" spacing="true"
+                     margin="true,false,false,false">
+                    <hbox spacing="true" margin="true">
+                        <buttonsPanel id="clientButtonPanel">
+                            <button id="addClientButton" invoke="addClientButtonClick" caption="Добавить Клиента"
+                                    enable="false"/>
+                        </buttonsPanel>
+                    </hbox>
+                    <filter id="filter"
+                            applyTo="resultTable"
+                            dataLoader="resultDl">
+                        <properties include=".*"/>
+                    </filter>
+                    <groupTable id="resultTable"
+                                width="100%"
+                                dataContainer="resultClientDc">
+                        <actions>
+                            <action id="edit" type="edit"/>
+                        </actions>
+                        <columns>
+                            <column id="fullName"/>
+                            <column id="status"/>
+                            <column id="iinBin"/>
+                            <column id="regDate"/>
+                            <column id="clientType"/>
+                        </columns>
+                        <rowsCount/>
+                    </groupTable>
+                </tab>
+                <tab id="clientsAppListTab" caption="Заявки нас создание карточки заказчика" spacing="true"/>
+            </tabSheet>
+        </vbox>
+    </layout>
+</window>

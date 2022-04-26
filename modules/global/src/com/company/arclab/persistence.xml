@@ -25,5 +25,6 @@
         <class>com.company.arclab.entity.application.Application</class>
         <class>com.company.arclab.entity.client.DocFormed</class>
         <class>com.company.arclab.entity.application.IdentityApplication</class>
+        <class>com.company.arclab.entity.kalkan.EdsRegistry</class>
     </persistence-unit>
 </persistence>

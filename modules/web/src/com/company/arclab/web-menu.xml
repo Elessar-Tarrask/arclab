@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
 
-    <item id="tasks" caption="mainMsg://menu_config.jcrm_TaskApplication.browse" icon="TASKS"/>
-    <item icon="font-icon:USER" screen="arclab_Identity.browse" caption="mainMsg://menu_config.arclab_Identity.browse"/>
+    <item id="tasks" screen="arclab_IdentityApplication.browse" caption="mainMsg://menu_config.jcrm_TaskApplication.browse" icon="TASKS"/>
+    <item icon="font-icon:USER" screen="arclab_IdentitySerachScreen" caption="mainMsg://menu_config.arclab_Identity.browse"/>
     <menu id="acts" icon="font-icon:CERTIFICATE">
 
         <item screen="jcrm_Application.browse" caption="mainMsg://menu_config.jcrm_Application.browse"/>
         <item screen="arclab_IdentityApplication.browse"
               caption="mainMsg://menu_config.arclab_IdentityApplication.browse"/>
-        <item screen="arclab_ClientApplicationManagerTask"
-              caption="mainMsg://menu_config.arclab_ClientApplicationManagerTask"/>
+        <item screen="arclab_CreateClient" caption="mainMsg://menu_config.arclab_CreateClient"/>
+
     </menu>
     <menu id="contracts" icon="font-icon:FILE_TEXT_O">
 
         <item screen="jcrm_DocFormed.browse" caption="mainMsg://menu_config.jcrm_DocFormed.browse"/>
+        <item screen="arclab_EdsRegistry.browse" caption="mainMsg://menu_config.arclab_EdsRegistry.browse"/>
     </menu>
     <menu id="incomingcall" caption="mainMsg://menu_config.contactcenter" icon="PHONE">
         <item screen="arclab_Incomingcall" caption="mainMsg://menu_config.incomingcall"/>
@@ -31,17 +32,17 @@
         </menu>
         <item screen="jcrm_TIdentDoc.browse" caption="mainMsg://menu_config.jcrm_TIdentDoc.browse"/>
     </menu>
-    <menu id="dashboard" icon="PIE_CHART">
-        <item screen="dashboard$PersistentDashboard.browse" caption="Admin console"/>
-        <item screen="dashboard$WidgetTemplate.browse"/>
-    </menu>
+<!--    <menu id="dashboard" icon="PIE_CHART">-->
+<!--        <item screen="dashboard$PersistentDashboard.browse" caption="Admin console"/>-->
+<!--        <item screen="dashboard$WidgetTemplate.browse"/>-->
+<!--    </menu>-->
     <menu id="reports" icon="LINE_CHART">
         <item id="report$Report.browse"/>
         <item id="report$ReportGroup.browse"/>
         <item id="report$Report.run"/>
-        <item id="report$showChart"/>
-        <item id="report$showReportTable"/>
-        <item id="report$showPivotTable"/>
+<!--        <item id="report$showChart"/>-->
+<!--        <item id="report$showReportTable"/>-->
+<!--        <item id="report$showPivotTable"/>-->
     </menu>
     <menu id="bproc" icon="HANDSHAKE_O" insertAfter="reports">
         <item screen="bproc_StartProcessScreen"/>
@@ -60,22 +61,22 @@
         <item id="sec$Group.browse"/>
         <item id="sec$Role.browse"/>
         <separator/>
-        <item id="sys$Category.browse"/>
-        <item id="sec$UserSessionEntity.browse"/>
-        <item id="sys$LockInfo.browse"/>
-        <item id="sys$FileDescriptor.browse"/>
-        <item id="sys$ScheduledTask.browse"/>
-        <item id="entityRestore"/>
+<!--        <item id="sys$Category.browse"/>-->
+<!--        <item id="sec$UserSessionEntity.browse"/>-->
+<!--        <item id="sys$LockInfo.browse"/>-->
+<!--        <item id="sys$FileDescriptor.browse"/>-->
+<!--        <item id="sys$ScheduledTask.browse"/>-->
+<!--        <item id="entityRestore"/>-->
         <item id="entityInspector.browse"/>
-        <item id="appProperties"/>
-        <item id="jmxConsole"/>
+<!--        <item id="appProperties"/>-->
+<!--        <item id="jmxConsole"/>-->
         <separator/>
-        <item id="entityLog"/>
-        <item id="sec$SessionLogEntry.browse"/>
-        <item id="sys$SendingMessage.browse"/>
-        <item id="serverLog"/>
-        <item id="screenProfiler"/>
-        <item id="performanceStatistics"/>
+<!--        <item id="entityLog"/>-->
+<!--        <item id="sec$SessionLogEntry.browse"/>-->
+<!--        <item id="sys$SendingMessage.browse"/>-->
+<!--        <item id="serverLog"/>-->
+<!--        <item id="screenProfiler"/>-->
+<!--        <item id="performanceStatistics"/>-->
     </menu>
     <menu id="help" icon="INFO_CIRCLE">
         <item id="aboutWindow" openType="DIALOG"/>

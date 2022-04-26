@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://schemas.haulmont.com/cuba/screen/fragment.xsd">
+    <layout expand="bpmFragmentBox" spacing="true" width="100%">
+        <groupBox id="bpmFragmentBox" showAsPanel="false" caption="msg://bpmPanel" css="min-width: 100%;" collapsable="true" collapsed="true" width="100%">
+            <tabSheet id="bpmTabSheet" width="100%" css="border-bottom: 1px solid var(--primary-dim-color); padding-bottom:5px">
+                <tab id="tabBpm" caption="msg://BPM" spacing="true" expand="bpmTaskDefBox">
+                    <vbox id="bpmTaskDefBox" width="100%" margin="true,false,true,false">
+                        <buttonsPanel id="buttonsPanel" spacing="true" margin="true, false, false, false"
+                                      visible="false">
+                            <button id="bpmActionBtn" stylename="friendly" caption="msg://bpmAction"/>
+                            <button id="refreshBtn" caption="msg://refresh" icon="REFRESH_ACTION"/>
+                        </buttonsPanel>
+                        <progressBar caption="msg://progressService" id="progress" indeterminate="true" width="200px"
+                                     visible="false"/>
+                        <hbox spacing="true" width="100%">
+                            <vbox spacing="true" width="100%">
+                                <textField id="taskNameField" width="100%" caption="Задача" editable="false"/>
+                                <textField id="taskAssigneeField" width="100%" caption="Исполнитель" editable="false"/>
+                                <textField id="taskCreateTimeField" width="100%" caption="Время назначения задачи" editable="false"/>
+                                <textField id="taskDueDateField" width="100%" caption="Дата исполнения" editable="false"/>
+                                <textField id="stepNameField" width="100%" caption="Шаг" editable="false" visible="false"/>
+                                <richTextArea id="rtArea" width="100%" height="150px" editable="false" caption="msg://taskDescription"/>
+                                <button id="restartJobButton" visible="false" caption="msg://Restart_failed_job"/>
+                            </vbox>
+                            <vbox spacing="true" width="100%">
+                                <textField id="reqIdField" width="100%" caption="Номер заявки" editable="false"/>
+                                <textField id="applicationStatusField" width="100%" caption="Статус заявки" editable="false"/>
+                                <textField id="managerField" width="100%" caption="Инициатор" editable="false"/>
+                                <dateField id="dateField" width="100%" caption="Дата создания" editable="false"/>
+                                <richTextArea id="infoField" height="150px" width="100%" editable="false" caption="msg://errorText" captionAsHtml="true"/>
+                            </vbox>
+                        </hbox>
+                    </vbox>
+                    <!--                сделать тут линию, отделяющую верх и низ -->
+                </tab>
+                <tab id="bpmDiagramTab" caption="msg://bpmDiagram" margin="true,false,false,false" spacing="true"
+                     expand="diagramBox">
+                    <groupBox id="diagramBox" expand="bpmDiagramFragment" caption="msg://bpmDiagram" showAsPanel="true" width="100%" captionAsHtml="true">
+                        <hbox spacing="true">
+                            <button id="mainProcessDiagramButton" visible="false" caption="msg://mainProcessDiagramButton.caption"/>
+                            <button id="subProcessDiagramButton" visible="false" caption="msg://subProcessDiagramButton.caption"/>
+                        </hbox>
+                        <fragment id="bpmDiagramFragment" screen="bproc_BpmnDiagramViewerFragment" width="1150px" height="500px"/>
+                    </groupBox>
+                </tab>
+                <tab id="historyTab" caption="msg://historyTab">
+                    <hbox spacing="true">
+                        <button id="mainProcessHistoryButton" visible="false"
+                                caption="msg://mainProcessDiagramButton.caption"/>
+                        <button id="subProcessHistoryButton" visible="false"
+                                caption="msg://subProcessDiagramButton.caption"/>
+                    </hbox>
+                    <fragment id="bpmHsitoryFragment" screen="bproc_ProcessInstanceEditHistoryFragment" width="100%"/>
+                </tab>
+                <tab id="logTab" caption="msg://loggingTab"/>
+            </tabSheet>
+        </groupBox>
+    </layout>
+</fragment>

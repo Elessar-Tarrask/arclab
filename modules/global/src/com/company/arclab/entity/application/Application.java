@@ -37,7 +37,6 @@ import java.util.List;
 })
 @Entity(name = "jcrm_Application")
 @NamePattern("%s  / %s|reqId")
-@Listeners("jcrm_ApplicationEntityListener")
 public class Application extends StandardEntity {
     private static final long serialVersionUID = -991923662665880784L;
 
@@ -124,13 +123,13 @@ public class Application extends StandardEntity {
         this.procId = procId;
     }
 
-//    public Set<TClient> getAffilateRegistry() {
-//        return affilateRegistry;
-//    }
+    public void setApplicationStatus(EApplicationStatus applicationStatus) {
+        this.applicationStatus = applicationStatus == null ? null : applicationStatus.getId();
+    }
 
-//    public void setAffilateRegistry(Set<TClient> affilateRegistry) {
-//        this.affilateRegistry = affilateRegistry;
-//    }
+    public EApplicationStatus getApplicationStatus() {
+        return applicationStatus == null ? null : EApplicationStatus.fromId(applicationStatus);
+    }
 
     public List<DocFormed> getFormedDocs() {
         return formedDocs;

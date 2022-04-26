@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://edsRegistryEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.arclab.web.screens.edsregistry">
+    <data>
+        <instance id="edsRegistryDc"
+                  class="com.company.arclab.entity.kalkan.EdsRegistry">
+            <view extends="_local">
+                <property name="fileToSign" view="_minimal"/>
+                <property name="fileCheckSum"/>
+                <property name="currentUser" view="_minimal"/>
+                <property name="signResult"/>
+                <property name="signErrorMessage"/>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <upload caption="Файл для подписи" id="uploadField"
+                showClearButton="true"
+                showFileName="true"/>
+        <textField caption="Комментарий" id="commentTextField"/>
+
+        <fragment id="ncaLayerFragment" enable="true" screen="arclab_KalkanCryptSignXmlFragment"/>
+        <!--        <button id="updateButton" caption="Обновить"/>-->
+        <fragment caption="Лист подписей" id="signatoryListFragment" screen="arclab_KalkanSignaturesListTable"/>
+    </layout>
+</window>

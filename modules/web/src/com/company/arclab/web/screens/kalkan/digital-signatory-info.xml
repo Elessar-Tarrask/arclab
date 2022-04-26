@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://digitalSignatoryInfo.caption"
+        messagesPack="com.company.arclab.web.screens.kalkan">
+    <data>
+        <instance id="tClientDigitalSignDc"
+                  class="com.company.arclab.entity.client.TClientDigitalSign">
+            <view extends="_local"/>
+            <loader id="tClientDigitalSignDl"/>
+        </instance>
+    </data>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="tClientDigitalSignDc" editable="false">
+                <column>
+                    <textField id="storagePathField" property="storagePath"/>
+                    <textField id="signatorySerialNumberField" property="signatorySerialNumber"/>
+                    <textField id="signatoryFullName" caption="msg://fullname"/>
+                    <textField id="signatoryEmail" caption="msg://email"/>
+                    <textField id="signatoryOrganization" caption="msg://organization"/>
+                    <textField id="signatoryValidityPeriodFrom" caption="msg://validityPeriodFrom"/>
+                    <textField id="signatoryValidityPeriodTill" caption="msg://validityPeriodTill"/>
+                    <textField id="signatorySupervisor" caption="msg://supervisor"/>
+                </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button stylename="primary" id="chooseAnotherCertificate" caption="Выбрать другой сертификат"/>
+            <button stylename="friendly" id="signActionCMS" caption="Подписать"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,52 +1,61 @@
 package com.company.arclab.entity.client;
 
+import com.haulmont.chile.core.annotations.MetaProperty;
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Table(name = "JCRM_T_CLIENT_DIGITAL_SIGN")
 @Entity(name = "jcrm_TClientDigitalSign")
+@NamePattern("%s|signatoryName")
 public class TClientDigitalSign extends StandardEntity {
     private static final long serialVersionUID = -8321214636252269901L;
 
-    @javax.persistence.Column
+    @Column(name = "STORAGE_PATH")
     private String storagePath;
 
-    @javax.persistence.Column
+    @Column(name = "SIGNATORY_TYPE")
     private String signatoryType;
 
-    @javax.persistence.Column
+    @Column(name = "SIGNATORY_NAME")
     private String signatoryName;
 
-    @javax.persistence.Column
+    @Column(name = "SIGNATORY_FIRST_KEY")
     private String signatoryFirstKey;
 
-    @javax.persistence.Column
+    @Column(name = "SIGNATORY_SECOND_KEY")
     private String signatorySecondKey;
 
-    @javax.persistence.Column
+    @Column(name = "SIGNATORY_CN")
     private String signatoryCN;
 
-    @javax.persistence.Column
+    @Column(name = "SIGNATORY_SURNAME")
     private String signatorySurname;
 
-    @javax.persistence.Column
+    @Column(name = "SIGNATORY_SERIAN_NUMBER")
     private String signatorySerialNumber;
 
-    @javax.persistence.Column
+    @Column(name = "SIGNATORY_C")
     private String signatoryC;
 
-    @javax.persistence.Column
+    @Column(name = "SIGNATORY_G")
     private String signatoryG;
 
-    @javax.persistence.Column
+    @Column(name = "SIGNATORY_DATE_FROM")
     private String signatoryDateFrom;
 
-    @javax.persistence.Column
+    @Column(name = "SIGNATORY_DATE_TILL")
     private String signatoryDateTill;
 
-    @javax.persistence.Column
+    @MetaProperty
+    @Transient
+    private String signatoryPassword;
+
+    @Column(name = "SIGNATORY_ACTION")
     private String signatoryAction;
 
     public void setSignatoryAction(String signatoryAction) {
@@ -55,6 +64,14 @@ public class TClientDigitalSign extends StandardEntity {
 
     public String getSignatoryAction() {
         return signatoryAction;
+    }
+
+    public void setSignatoryPassword(String signatoryPassword) {
+        this.signatoryPassword = signatoryPassword;
+    }
+
+    public String getSignatoryPassword() {
+        return signatoryPassword;
     }
 
     public String getSignatoryDateTill() {

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://schemas.haulmont.com/cuba/screen/fragment.xsd">
+    <data>
+        <collection id="edsRegistryDc"
+                    class="com.company.arclab.entity.kalkan.EdsRegistry"
+                    view="_base">
+            <loader id="edsRegistryDl"/>
+        </collection>
+    </data>
+    <layout>
+        <table id="edsRegistryTable"
+               dataContainer="edsRegistryDc"
+               height="100%"
+               width="100%">
+            <columns>
+                <column id="signerFio"/>
+                <column id="signDateTime"/>
+                <column id="fileToSign"/>
+                <column id="signerIinBin" collapsed="true"/>
+                <column id="signAction"/>
+                <column id="signComment"/>
+                <column id="currentUser" collapsed="true"/>
+                <column id="signResult">
+                    <!--                    <formatter-->
+                    <!--                            class="kz.almanit.jcrm.web.screens.kalkancrypt.KalkanSignaturesListTable$UppercaseFormatter"/>-->
+                </column>
+                <column id="signErrorMessage" collapsed="true"/>
+            </columns>
+        </table>
+    </layout>
+</fragment>
