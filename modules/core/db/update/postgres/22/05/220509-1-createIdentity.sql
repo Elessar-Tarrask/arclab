@@ -1,4 +1,4 @@
-create table JCRM_APPLICATION (
+create table ARCLAB_IDENTITY (
     ID uuid,
     VERSION integer not null,
     CREATE_TS timestamp,
@@ -7,18 +7,17 @@ create table JCRM_APPLICATION (
     UPDATED_BY varchar(50),
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
-    DTYPE varchar(31),
     --
-    NAME varchar(255),
-    IS_JB boolean not null,
-    MANAGER_ID uuid,
-    REQ_ID bigint,
-    PROC_ID varchar(255),
-    INFO text,
-    APPLICATION_STATUS varchar(255),
     IIN_BIN varchar(255),
     FULL_NAME varchar(255),
-    DATE_OF_COMPLETION date,
+    CLIENT_TYPE varchar(50),
+    STATUS varchar(50),
+    REG_DATE date,
+    NAME varchar(255),
+    MIDDLE_NAME varchar(255),
+    LAST_NAME varchar(255),
+    BIRTH_DATE date,
+    SEX varchar(50),
     --
     primary key (ID)
 );

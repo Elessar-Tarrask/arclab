@@ -3,10 +3,10 @@
 @mixin arclab_helium {
   @include helium;
   /* Basic */
-  --app-background-color: #EBEEEF;
+  --app-background-color: #d0aeee;
   --border-color: #DBDBDB;
   /* --dim-color: #006CE0; */
-  --primary-color: #FE5000;
+  --primary-color: #8700fe;
   --primary-color_rgb: 254, 80, 0;
   --secondary-color: #006CE0;
   --secondary-color_rgb: 0, 108, 224;
@@ -15,8 +15,8 @@
   /* Common */
   --dim-color-shade-1: #005EC2;
   --dim-color-shade-2: #0054AD;
-  --primary-color-shade-1: #E04300;
-  --primary-color-shade-2: #C73C00;
+  --primary-color-shade-1: #8700fe;
+  --primary-color-shade-2: #240541;
   /* --primary-dim-color: #FF7E47; */
   --secondary-color-shade-1: #005EC2;
   --secondary-color-shade-2: #0054AD;

@@ -1,0 +1,2 @@
+create unique index IDX_JCRM_KATO_COUNTRY_UK_CODE on JCRM_KATO_COUNTRY (CODE) where DELETE_TS is null ;
+create unique index IDX_JCRM_KATO_COUNTRY_UK_CODE_WAY4 on JCRM_KATO_COUNTRY (CODE_WAY4) where DELETE_TS is null ;

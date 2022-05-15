@@ -1,1 +1,0 @@
-update SEC_USER set DTYPE = 'TMANAGER' where DTYPE is null ;

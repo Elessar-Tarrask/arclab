@@ -14,7 +14,7 @@
     width: 222px;
     display: flex;
     flex-direction: column;
-    background: #FFFFFF;
+    background: #d0aeee;
     border-radius: 4px;
     padding: 20px 7px;
 }
@@ -140,7 +140,7 @@
     border-radius: 0 !important;
     border-bottom: 0.5px dashed rgba(25, 48, 72, 0.4) !important;
     padding: 0 0 10px 0 !important;
-    color: #fe5000 !important;
+    color: #8700fe !important;
     font-size: 10px !important;
     line-height: 12px !important;
     margin-top: 10px !important;
@@ -195,13 +195,13 @@
     cursor: pointer;
 }
 .client-tab:first-child {
-    background: #FF8400;
+    background: #d0aeee;
     margin-left: 0;
     color: #FFFFFF;
 }
 
 .selected-activity-button {
-    background: #FF8400;
+    background: #8700fe;
     margin-left: 0;
     color: #FFFFFF;
 }

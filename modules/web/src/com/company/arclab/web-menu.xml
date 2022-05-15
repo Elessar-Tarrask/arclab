@@ -16,11 +16,6 @@
         <item screen="jcrm_DocFormed.browse" caption="mainMsg://menu_config.jcrm_DocFormed.browse"/>
         <item screen="arclab_EdsRegistry.browse" caption="mainMsg://menu_config.arclab_EdsRegistry.browse"/>
     </menu>
-    <menu id="incomingcall" caption="mainMsg://menu_config.contactcenter" icon="PHONE">
-        <item screen="arclab_Incomingcall" caption="mainMsg://menu_config.incomingcall"/>
-        <item screen="arclab_MissedCallBrowse" caption="mainMsg://menu_config.missedcall"/>
-        <item screen="jcrm_DContactKind.browse" caption="mainMsg://menu_config.jcrm_DContactKind.browse"/>
-    </menu>
     <menu id="dictionary" icon="BOOK">
         <item screen="arclab_MeasuringInstruments.browse"
               caption="mainMsg://menu_config.arclab_MeasuringInstruments.browse"/>
@@ -36,7 +31,7 @@
 <!--        <item screen="dashboard$PersistentDashboard.browse" caption="Admin console"/>-->
 <!--        <item screen="dashboard$WidgetTemplate.browse"/>-->
 <!--    </menu>-->
-    <menu id="reports" icon="LINE_CHART">
+    <menu id="reports" icon="LINE_CHART" caption="mainMsg://menu_config.arclab_reports">
         <item id="report$Report.browse"/>
         <item id="report$ReportGroup.browse"/>
         <item id="report$Report.run"/>
@@ -56,7 +51,7 @@
         <item screen="bproc_DmnDecisionTableBrowse"/>
         <item screen="bproc_DecisionTableModelerScreen"/>
     </menu>
-    <menu id="administration" icon="GEARS">
+    <menu id="administration" icon="GEARS" caption="mainMsg://menu_config.arclab_administration">
         <item id="sec$User.browse"/>
         <item id="sec$Group.browse"/>
         <item id="sec$Role.browse"/>
@@ -78,7 +73,7 @@
 <!--        <item id="screenProfiler"/>-->
 <!--        <item id="performanceStatistics"/>-->
     </menu>
-    <menu id="help" icon="INFO_CIRCLE">
+    <menu id="help" icon="INFO_CIRCLE" caption="mainMsg://menu_config.arclab_help">
         <item id="aboutWindow" openType="DIALOG"/>
         <item class="com.haulmont.cuba.web.app.domain.DomainProvider" id="printDomain"/>
         <separator/>

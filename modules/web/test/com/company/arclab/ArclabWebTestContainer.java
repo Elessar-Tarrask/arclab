@@ -13,7 +13,9 @@ public class ArclabWebTestContainer extends TestContainer {
                 "com.haulmont.addon.helium",
                 "com.haulmont.addon.dashboard",
                 "com.haulmont.reports",
-                "com.haulmont.addon.bproc");
+                "com.haulmont.addon.bproc",
+                "com.haulmont.addon.globalevents",
+                "com.haulmont.charts");
         appPropertiesFiles = Arrays.asList(
                 // List the files defined in your web.xml
                 // in appPropertiesConfig context parameter of the web module
