@@ -30,6 +30,7 @@
                 width="800"/>
     <layout expand="scrollBox" spacing="true">
         <scrollBox id="scrollBox" spacing="true">
+            <fragment id="bpmPanelFragment" screen="arclab_BpmPanelCustomFragment" width="100%"/>
             <form id="form" dataContainer="identityApplicationDc">
                 <column width="350px">
                     <textField id="nameField" property="name"/>

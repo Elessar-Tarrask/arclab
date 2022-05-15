@@ -56,7 +56,7 @@ public class ClientAppHeadManager extends StandardEditor<IdentityApplication> {
     public void onInit(InitEvent event) {
         if (application != null) {
             application = dataManager
-                    .reload(application, "application-view");
+                    .reload(application, "identityApplication-view");
             Identity identity = application.getIdentity();
             identity = dataManager.reload(identity, "identity-view");
             identityDc.setItem(identity);

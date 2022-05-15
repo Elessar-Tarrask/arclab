@@ -16,6 +16,12 @@
                 <entry key="arclab_EdsService" value="com.company.arclab.service.EdsService"/>
                 <entry key="arclab_ClientCreateService" value="com.company.arclab.service.ClientCreateService"/>
                 <entry key="arclab_BPMNService" value="com.company.arclab.service.BPMNService"/>
+                <entry key="arclab_ActiveApplicationService"
+                       value="com.company.arclab.service.ActiveApplicationService"/>
+                <entry key="arclab_ApplicationService" value="com.company.arclab.service.ApplicationService"/>
+                <entry key="arclab_TaskService" value="com.company.arclab.service.TaskService"/>
+                <entry key="arclab_OfficerService" value="com.company.arclab.service.OfficerService"/>
+                <entry key="arclab_ClientService" value="com.company.arclab.service.ClientService"/>
             </map>
         </property>
     </bean>

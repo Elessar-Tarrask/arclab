@@ -3,6 +3,7 @@ package com.company.arclab.service;
 import com.company.arclab.entity.application.EClientApplicationType;
 import com.company.arclab.entity.application.IdentityApplication;
 import com.company.arclab.entity.client.Identity;
+import com.company.arclab.entity.client.TManager;
 import com.company.arclab.entity.client.dict.EClientStatus;
 import com.company.arclab.entity.client.dict.EClientType;
 import com.haulmont.addon.bproc.entity.ProcessInstanceData;
@@ -66,6 +67,10 @@ public class ClientCreateServiceBean implements ClientCreateService {
         identityApplication.setReqId(reqNum);
         identityApplication.setName(identityApplication.getMetaClass().getName());
         identityApplication.setApplicationType(EClientApplicationType.fromId(appType));
+        TManager manager = dataManager.load(TManager.class).id(user.getId()).view("tManager-view")
+                .optional().orElse(null);
+        if (manager != null)
+            identityApplication.setManager(manager);
         identityApplication.setIdentity(client);
         identityApplication = dataManager.commit(identityApplication);
 
@@ -91,7 +96,7 @@ public class ClientCreateServiceBean implements ClientCreateService {
             bprocRuntimeService.setVariable(processInstanceData.getId(), "procId",
                     processInstanceData.getId());
 
-            identityApplication = dataManager.reload(identityApplication, "clientApplication-view");
+            identityApplication = dataManager.reload(identityApplication, "identityApplication-view");
             identityApplication.setProcId(processInstanceData.getId());
 
             identityApplication = transactionalDataManager.save(identityApplication);

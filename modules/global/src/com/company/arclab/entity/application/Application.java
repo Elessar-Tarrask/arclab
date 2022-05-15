@@ -5,7 +5,6 @@ import com.company.arclab.entity.client.TManager;
 import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
-import com.haulmont.cuba.core.entity.annotation.Listeners;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.entity.annotation.PublishEntityChangedEvents;
 import com.haulmont.cuba.core.global.DeletePolicy;
@@ -36,7 +35,7 @@ import java.util.List;
         @UniqueConstraint(name = "IDX_JCRM_APPLICATION_ID_UNQ", columnNames = {"ID"})
 })
 @Entity(name = "jcrm_Application")
-@NamePattern("%s  / %s|reqId")
+@NamePattern("%s|reqId")
 public class Application extends StandardEntity {
     private static final long serialVersionUID = -991923662665880784L;
 

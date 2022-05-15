@@ -51,6 +51,7 @@ dependencies {
     appComponent("com.haulmont.reports:reports-global:$cubaVersion")
     appComponent('com.haulmont.addon.bproc:bproc-global:1.2.1')
     appComponent('com.haulmont.addon.globalevents:cubaglevt-global:0.6.1')
+    appComponent('de.diedavids.cuba.userinbox:user-inbox-global:0.8.0')
 }
 
 def postgres = 'org.postgresql:postgresql:42.2.9'

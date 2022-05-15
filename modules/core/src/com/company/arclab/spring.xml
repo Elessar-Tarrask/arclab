@@ -5,4 +5,12 @@
     <!-- Annotation-based beans -->
     <context:component-scan base-package="com.company.arclab"/>
 
+    <bean id="restTemp" class="org.springframework.web.client.RestTemplate"/>
+
+    <bean id="clientTaskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="5"/>
+        <property name="maxPoolSize" value="10"/>
+        <property name="queueCapacity" value="1000"/>
+    </bean>
+
 </beans>

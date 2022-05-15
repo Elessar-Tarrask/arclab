@@ -1,6 +1,7 @@
 package com.company.arclab.entity.application;
 
 import com.company.arclab.entity.client.Identity;
+import com.haulmont.chile.core.annotations.NamePattern;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "ARCLAB_IDENTITY_APPLICATION")
 @Entity(name = "arclab_IdentityApplication")
 @PrimaryKeyJoinColumn(name = "ID", referencedColumnName = "ID")
+@NamePattern("%s / %s|reqId,iinBin")
 public class IdentityApplication extends Application {
     private static final long serialVersionUID = -6091953125488063453L;
 
