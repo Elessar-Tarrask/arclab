@@ -66,11 +66,5 @@
                 </vbox>
             </vbox>
         </vbox>
-        <label visible="false"
-               id="poweredByLink"
-               align="MIDDLE_CENTER"
-               htmlEnabled="true"
-               stylename="c-powered-by"
-               value="mainMsg://cuba.poweredBy"/>
     </layout>
 </window>
