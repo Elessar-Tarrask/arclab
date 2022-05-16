@@ -6,7 +6,7 @@
   --app-background-color: #EBEEEF;
   --border-color: #DBDBDB;
   /* --dim-color: #006CE0; */
-  --primary-color: #FE5000;
+  --primary-color: #8700fe;
   --primary-color_rgb: 254, 80, 0;
   --secondary-color: #006CE0;
   --secondary-color_rgb: 0, 108, 224;
@@ -15,8 +15,8 @@
   /* Common */
   --dim-color-shade-1: #005EC2;
   --dim-color-shade-2: #0054AD;
-  --primary-color-shade-1: #E04300;
-  --primary-color-shade-2: #C73C00;
+  --primary-color-shade-1: #72459b;
+  --primary-color-shade-2: #d0aeee;
   /* --primary-dim-color: #FF7E47; */
   --secondary-color-shade-1: #005EC2;
   --secondary-color-shade-2: #0054AD;
@@ -33,7 +33,7 @@
     /* Common */
     --sidemenu-text-color: #f2f2f2;
     --menubar-border-color: #000000;
-    --menubar-background-color: #000000;
+    --menubar-background-color: #240541;
     --sidemenu-background-color: #4d4d4d;
     --sidemenu-title-background-color: #4d4d4d;
     --sidemenu-collapsible-collapse-button-background-color: #4d4d4d;
@@ -45,7 +45,7 @@
     .v-table-row-odd {
       &.error-transactions {
         background: rgba(241, 169, 160, 0.3);
-        color: red;
+        color: #d0aeee;
 
         .c-grouptable-group-cell-expander:before {
           color: black;
@@ -70,7 +70,7 @@
 
   .good-sign {
     background-color: rgba(141, 169, 160, 0.3);
-    color: red;
+    color: #48ff00;
   }
 
   .v-loading-indicator,

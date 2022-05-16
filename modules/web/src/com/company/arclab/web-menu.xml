@@ -16,11 +16,7 @@
         <item screen="jcrm_DocFormed.browse" caption="mainMsg://menu_config.jcrm_DocFormed.browse"/>
         <item screen="arclab_EdsRegistry.browse" caption="mainMsg://menu_config.arclab_EdsRegistry.browse"/>
     </menu>
-    <menu id="incomingcall" caption="mainMsg://menu_config.contactcenter" icon="PHONE">
-        <item screen="arclab_Incomingcall" caption="mainMsg://menu_config.incomingcall"/>
-        <item screen="arclab_MissedCallBrowse" caption="mainMsg://menu_config.missedcall"/>
-        <item screen="jcrm_DContactKind.browse" caption="mainMsg://menu_config.jcrm_DContactKind.browse"/>
-    </menu>
+
     <menu id="dictionary" icon="BOOK">
         <item screen="arclab_MeasuringInstruments.browse"
               caption="mainMsg://menu_config.arclab_MeasuringInstruments.browse"/>
