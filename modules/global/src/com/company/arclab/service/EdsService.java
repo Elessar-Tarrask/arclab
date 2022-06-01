@@ -8,5 +8,5 @@ import java.util.List;
 public interface EdsService {
     String NAME = "arclab_EdsService";
 
-    List<EdsRegistry> loadFormDb(Entity entity);
+    List<EdsRegistry> loadFormDb(String checkSum);
 }

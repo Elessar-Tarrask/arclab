@@ -37,6 +37,18 @@ public class DigitalSignatoryInfo extends Screen {
     @Inject
     private Events events;
 
+    public void setTClientDigitalSignDc(TClientDigitalSign tClientDigitalSign){
+        tClientDigitalSignDc.setItem(tClientDigitalSign);
+        String fullName = tClientDigitalSign.getSignatorySurname() + " " + tClientDigitalSign.getSignatoryG();
+        signatoryFullName.setValue(fullName);
+//        tClientDigitalSignDc.getItem().setSignatoryAction(null);
+//        signatoryValidityPeriodFrom.setValue("2021-05-08");
+//        signatoryValidityPeriodTill.setValue("2022-05-08");
+//
+        signatoryOrganization.setValue("ARCLAB");
+        signatorySupervisor.setValue("-");
+    }
+
     @Subscribe
     public void onInit(InitEvent event) {
     }
@@ -44,15 +56,6 @@ public class DigitalSignatoryInfo extends Screen {
     @Subscribe
     public void onBeforeShow(BeforeShowEvent event) {
         TClientDigitalSign tClientDigitalSign = dataManager.create(TClientDigitalSign.class);
-
-        String fullName = tClientDigitalSign.getSignatoryCN() + " " + tClientDigitalSign.getSignatoryG();
-        signatoryFullName.setValue("Адилова");
-        tClientDigitalSignDc.getItem().setSignatoryAction(null);
-        signatoryValidityPeriodFrom.setValue("2021-05-08");
-        signatoryValidityPeriodTill.setValue("2022-05-08");
-
-        signatoryOrganization.setValue("ARCLAB");
-        signatorySupervisor.setValue("-");
     }
 
     @Subscribe("chooseAnotherCertificate")

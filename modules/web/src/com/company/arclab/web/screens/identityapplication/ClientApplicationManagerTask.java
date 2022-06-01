@@ -135,7 +135,7 @@ public class ClientApplicationManagerTask extends StandardEditor<IdentityApplica
     public void onSendToApprovalClick(Button.ClickEvent event) {
         if (formedDocsDc.getMutableItems().isEmpty()) {
             notifications.create(Notifications.NotificationType.ERROR)
-                    .withCaption("Требуется прикрепить как минимум 1 документ, во вкладке 'Документы', таблица 'Прикрепленные документы'")
+                    .withCaption("Требуется прикрепить как минимум 1 документ, во вкладке 'Документы'")
                     .withContentMode(ContentMode.HTML)
                     .show();
             return;

@@ -17,7 +17,7 @@
     <layout expand="editActions" spacing="true">
         <form id="form" dataContainer="docFormedDc">
             <column width="350px">
-                <textField id="docTypeField" property="docType"/>
+                <textField id="docTypeField" property="docType" editable="false"/>
                 <upload id="docFileField" fileStoragePutMode="IMMEDIATE" property="docFile" showFileName="true"/>
                 <lookupField id="docStatusField" property="docStatus"/>
             </column>

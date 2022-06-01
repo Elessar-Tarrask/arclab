@@ -6,16 +6,7 @@ import com.haulmont.cuba.core.entity.FileDescriptor;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.security.entity.User;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.Date;
 
 @Table(name = "ARCLAB_EDS_REGISTRY")
@@ -34,8 +25,7 @@ public class EdsRegistry extends StandardEntity {
     @Column(name = "SIGN_COMMENT")
     private String signComment;
 
-    @Transient
-    @MetaProperty
+    @Column(name = "FILE_CHECK_SUM")
     private String fileCheckSum;
 
     @OneToOne(fetch = FetchType.LAZY)

@@ -16,10 +16,10 @@
                     <textField id="storagePathField" property="storagePath"/>
                     <textField id="signatorySerialNumberField" property="signatorySerialNumber"/>
                     <textField id="signatoryFullName" caption="msg://fullname"/>
-                    <textField id="signatoryEmail" caption="msg://email"/>
+                    <textField id="signatoryEmail" caption="msg://email" property="signatoryC"/>
                     <textField id="signatoryOrganization" caption="msg://organization"/>
-                    <textField id="signatoryValidityPeriodFrom" caption="msg://validityPeriodFrom"/>
-                    <textField id="signatoryValidityPeriodTill" caption="msg://validityPeriodTill"/>
+                    <textField id="signatoryValidityPeriodFrom" caption="msg://validityPeriodFrom" property="signatoryDateFrom"/>
+                    <textField id="signatoryValidityPeriodTill" caption="msg://validityPeriodTill" property="signatoryDateTill"/>
                     <textField id="signatorySupervisor" caption="msg://supervisor"/>
                 </column>
             </form>

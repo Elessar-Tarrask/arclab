@@ -408,7 +408,7 @@ public class KalkanCryptSignXmlFragment extends ScreenFragment {
 
     private void sendEventBack(String signAction) {
         events.publish(new UpdateEcpListEvent(this, edsRegistryDc.getItem().getCurrentUser(),
-                edsRegistryDc.getItem(), signAction));
+                edsRegistryDc.getItem(), signAction, edsRegistryDc.getItem().getFileCheckSum()));
     }
 
     private Boolean NotificationsConnectionProc(int code, String connectionResult) {
@@ -477,5 +477,11 @@ public class KalkanCryptSignXmlFragment extends ScreenFragment {
     public void onBeforeClose(Screen.BeforeCloseEvent event) {
         if (isConnectionOpened)
             ncaLayerCallFunction("webSocketOnClose");
+    }
+
+    @Subscribe("digitalSignScreen")
+    public void onDigitalSignScreenAfterShow(ScreenFacet.AfterShowEvent event) {
+        DigitalSignatoryInfo a = (DigitalSignatoryInfo) event.getScreen();
+        a.setTClientDigitalSignDc(digitalSignDc.getItem());
     }
 }

@@ -6,6 +6,16 @@ import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.security.entity.User;
 
 public class UpdateEcpListEvent extends GlobalApplicationEvent implements GlobalUiEvent {
+
+    public String getCheckSum() {
+        return checkSum;
+    }
+
+    public void setCheckSum(String checkSum) {
+        this.checkSum = checkSum;
+    }
+
+    private String checkSum;
     private User currentUser;
 
     public User getCurrentUser() {
@@ -41,10 +51,11 @@ public class UpdateEcpListEvent extends GlobalApplicationEvent implements Global
      *
      * @param source the object on which the event initially occurred (never {@code null})
      */
-    public UpdateEcpListEvent(Object source, User currentUser, Entity entity, String outcome) {
+    public UpdateEcpListEvent(Object source, User currentUser, Entity entity, String outcome, String checkSum) {
         super(source);
         this.currentUser = currentUser;
         this.entity = entity;
         this.outcome = outcome;
+        this.checkSum = checkSum;
     }
 }

@@ -45,7 +45,7 @@ public class KalkanSignaturesListTable extends ScreenFragment {
     @Inject
     private Table<EdsRegistry> edsRegistryTable;
 
-    private Entity currentEntityToUpdate;
+    private String currentEntityToUpdate;
     @Inject
     private EdsService edsService;
 
@@ -72,9 +72,9 @@ public class KalkanSignaturesListTable extends ScreenFragment {
         }
     }
 
-    public void setEntityId(Entity entity) {
-        currentEntityToUpdate = entity;
-        edsRegistryDc.setItems(edsService.loadFormDb(entity));
+    public void setEntityId(String checkSum) {
+        currentEntityToUpdate = checkSum;
+        edsRegistryDc.setItems(edsService.loadFormDb(checkSum));
         edsRegistryDl.load();
     }
 
@@ -96,7 +96,7 @@ public class KalkanSignaturesListTable extends ScreenFragment {
             String receiverLogin = event.getCurrentUser().getLogin();
             String currentLogin = userSession.getUser().getLogin();
             if (receiverLogin.equals(currentLogin))
-                edsRegistryDc.setItems(edsService.loadFormDb(event.getEntity()));
+                edsRegistryDc.setItems(edsService.loadFormDb(event.getCheckSum()));
             edsRegistryDl.load();
         }
     }
