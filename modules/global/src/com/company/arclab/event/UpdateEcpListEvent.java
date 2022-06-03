@@ -26,16 +26,6 @@ public class UpdateEcpListEvent extends GlobalApplicationEvent implements Global
         this.currentUser = currentUser;
     }
 
-    public Entity getEntity() {
-        return entity;
-    }
-
-    public void setEntity(Entity entity) {
-        this.entity = entity;
-    }
-
-    private Entity entity;
-
     public String getOutcome() {
         return outcome;
     }
@@ -51,10 +41,9 @@ public class UpdateEcpListEvent extends GlobalApplicationEvent implements Global
      *
      * @param source the object on which the event initially occurred (never {@code null})
      */
-    public UpdateEcpListEvent(Object source, User currentUser, Entity entity, String outcome, String checkSum) {
+    public UpdateEcpListEvent(Object source, User currentUser, String outcome, String checkSum) {
         super(source);
         this.currentUser = currentUser;
-        this.entity = entity;
         this.outcome = outcome;
         this.checkSum = checkSum;
     }

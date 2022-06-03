@@ -90,7 +90,27 @@
             <property name="docFile" view="_minimal"/>
             <property name="docStatus"/>
         </property>
-        <property name="identity" view="identity-view"/>
+        <property name="identity" view="identity-view">
+            <property name="tWeatherMeasurements" view="_minimal">
+                <property name="barometricPressure"/>
+                <property name="airHumidity"/>
+                <property name="windDirection"/>
+                <property name="windVelocity"/>
+                <property name="airTemperature"/>
+                <property name="rainfall"/>
+                <property name="terrainFeature"/>
+                <property name="verificationDetails"/>
+                <property name="sampleType" view="_minimal">
+                    <property name="type"/>
+                    <property name="code"/>
+                </property>
+                <property name="sampleTakenFrom"/>
+                <property name="takenDate"/>
+                <property name="expiratoryDate"/>
+                <property name="measureStatus"/>
+                <property name="determinedIngredients"/>
+            </property>
+        </property>
     </view>
     <view entity="jcrm_Application" name="application-view" extends="_local" systemProperties="true">
         <property name="manager" view="_minimal"/>

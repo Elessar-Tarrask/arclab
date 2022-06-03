@@ -5,6 +5,7 @@ import com.haulmont.cuba.core.sys.AppContext;
 import com.haulmont.cuba.core.sys.SecurityContext;
 import com.haulmont.cuba.security.auth.events.UserLoggedInEvent;
 import com.haulmont.cuba.security.entity.User;
+import org.slf4j.Logger;
 import org.springframework.context.event.EventListener;
 
 import javax.annotation.ManagedBean;
@@ -20,6 +21,8 @@ public class LoginEventListener {
     public static final String NAME = "arclab_LoginEventListener";
     @Inject
     private ActiveApplicationService activeApplicationService;
+    @Inject
+    private Logger log;
 
     @EventListener
     public void userLoggedIn(UserLoggedInEvent event) {
@@ -33,6 +36,7 @@ public class LoginEventListener {
 //            }
 //            notifyAboutTasks(user);
 //        });
+        log.trace("UserLoggen in ", event.getAuthenticationDetails());
     }
 
     private void notifyAboutTasks(User user) {

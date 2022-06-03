@@ -5,11 +5,16 @@
     <data>
         <instance id="identityApplicationDc"
                   class="com.company.arclab.entity.application.IdentityApplication">
-            <instance id="identityDc" property="identity"/>
+            <instance id="identityDc" property="identity">
+                <collection id="tWeatherMeasurementsDc" property="tWeatherMeasurements"/>
+                <collection id="contactsAdressesDc" property="contactsAdresses"/>
+                <collection id="phonesDc" property="phones"/>
+            </instance>
             <view extends="identityApplication-view"/>
             <loader/>
             <collection id="formedDocsDc" property="formedDocs"/>
         </instance>
+        <instance id="tWeatherConditionsNewDc" class="com.company.arclab.entity.client.acts.TWeatherConditions"/>
     </data>
     <layout spacing="true">
         <vbox>
@@ -37,8 +42,9 @@
                     <button id="saveTemp" caption="Сохранить и выйти" primary="true"/>
                 </buttonsPanel>
             </groupBox>
-            <groupBox caption="Лист подписей"
-                      collapsable="false"
+            <groupBox id="signatoryListGroupBox"
+                      caption="Лист подписей"
+                      collapsable="true"
                       spacing="true"
                       showAsPanel="true">
                 <fragment id="signatoryListFragment" screen="arclab_KalkanSignaturesListTable"/>
@@ -64,21 +70,115 @@
                                     </column>
                                 </form>
                             </tab>
-                            <tab id="additionalInfo" caption="Атмосферные пробы" spacing="true" margin="true,true,true,true">
-                                <form id="additionalInfoForm">
-                                    <column width="350px">
-                                        <textField/>
-                                        <!--                                        <textField />-->
-                                        <!--                                        <lookupField />-->
-                                        <!--                                        <lookupField />-->
-                                        <!--                                        <dateField />-->
-                                        <!--                                        <textField />-->
-                                        <!--                                        <textField />-->
-                                        <!--                                        <textField />-->
-                                        <!--                                        <dateField />-->
-                                        <!--                                        <lookupField/>-->
-                                    </column>
-                                </form>
+                            <tab id="contactAddressTab" caption="Адреса">
+                                <groupBox id="contactsAdressesBox"
+                                          caption="Контактные Адреса">
+                                    <table id="contactsAdressesTable" dataContainer="contactsAdressesDc" width="100%" height="200px">
+                                        <actions>
+                                            <action id="create" type="create"/>
+                                            <action id="edit" type="edit"/>
+                                            <action id="remove" type="remove"/>
+                                        </actions>
+                                        <columns>
+                                            <column id="addressType"/>
+                                            <column id="country"/>
+                                            <column id="region"/>
+                                            <column id="city"/>
+                                            <column id="houseNumber"/>
+                                            <column id="number"/>
+                                            <column id="addrSerialNumber"/>
+                                            <column id="fulladdress"/>
+                                            <column id="cityName"/>
+                                            <column id="district"/>
+                                            <column id="locality"/>
+                                            <column id="streetName"/>
+                                            <column id="zipCode"/>
+                                            <column id="priznOsn"/>
+                                        </columns>
+                                        <buttonsPanel>
+                                            <button action="contactsAdressesTable.create"/>
+                                            <button action="contactsAdressesTable.edit"/>
+                                            <button action="contactsAdressesTable.remove"/>
+                                        </buttonsPanel>
+                                    </table>
+                                </groupBox>
+                            </tab>
+                            <tab id="phonesTab" caption="Телефоны">
+                                <groupBox id="phonesBox" >
+                                    <table id="phonesTable" dataContainer="phonesDc" width="100%" height="200px">
+                                        <actions>
+                                            <action id="create" type="create"/>
+                                            <action id="edit" type="edit"/>
+                                            <action id="remove" type="remove"/>
+                                        </actions>
+                                        <columns>
+                                            <column id="phone"/>
+                                            <column id="phoneSerialNumber"/>
+                                            <column id="contactName"/>
+                                            <column id="contactType"/>
+                                            <column id="contactKind"/>
+                                            <column id="internalPhone"/>
+                                            <column id="isMain"/>
+                                            <column id="note"/>
+                                            <column id="isAddedByContactCenter"/>
+                                        </columns>
+                                        <buttonsPanel>
+                                            <button action="phonesTable.create"/>
+                                            <button action="phonesTable.edit"/>
+                                            <button action="phonesTable.remove"/>
+                                        </buttonsPanel>
+                                    </table>
+                                </groupBox>
+                            </tab>
+                            <tab id="atmosphericSamples" caption="Атмосферные пробы" spacing="true"
+                                 margin="true,true,true,true">
+                                <scrollBox id="weatherCoditionsScroll" spacing="true"
+                                           margin="true,true,true,true">
+                                    <form id="weatherCoditionsForm" dataContainer="tWeatherConditionsNewDc">
+                                        <column width="350px">
+                                            <textField id="barometricPressureField" property="barometricPressure"/>
+                                            <textField id="airHumidityField" property="airHumidity"/>
+                                            <textField id="windDirectionField" property="windDirection"/>
+                                            <textField id="windVelocityField" property="windVelocity"/>
+                                            <textField id="airTemperatureField" property="airTemperature"/>
+                                            <textField id="rainfallField" property="rainfall"/>
+                                            <textField id="verificationDetailsField" property="verificationDetails"/>
+                                            <textField id="terrainFeatureField" property="terrainFeature"/>
+                                            <lookupField id="sampleTakenFromField" property="sampleTakenFrom"/>
+                                            <textField id="determinedIngredientsField" property="determinedIngredients"/>
+                                        </column>
+                                    </form>
+                                    <hbox id="editActions" spacing="true">
+                                        <button id="createButton" caption="Создать" stylename="friendly"/>
+                                    </hbox>
+                                </scrollBox>
+
+                                <groupTable id="tWeatherConditionsesTable"
+                                            width="100%"
+                                            dataContainer="tWeatherMeasurementsDc">
+                                    <actions>
+                                        <action id="edit" type="edit"/>
+                                        <action id="remove" type="remove"/>
+                                    </actions>
+                                    <columns>
+                                        <column id="barometricPressure"/>
+                                        <column id="airHumidity"/>
+                                        <column id="windDirection"/>
+                                        <column id="windVelocity"/>
+                                        <column id="airTemperature"/>
+                                        <column id="rainfall"/>
+                                        <column id="verificationDetails"/>
+                                        <column id="terrainFeature"/>
+                                        <column id="sampleTakenFrom"/>
+                                        <column id="determinedIngredients"/>
+                                    </columns>
+                                    <rowsCount/>
+                                    <buttonsPanel id="buttonsPanel"
+                                                  alwaysVisible="true">
+                                        <button id="editBtn" action="tWeatherConditionsesTable.edit"/>
+                                        <button id="removeBtn" action="tWeatherConditionsesTable.remove"/>
+                                    </buttonsPanel>
+                                </groupTable>
                             </tab>
                         </tabSheet>
                     </tab>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://TWeatherConditionsEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.arclab.web.screens.tweatherconditions">
+    <data>
+        <instance id="tWeatherConditionsDc"
+                  class="com.company.arclab.entity.client.acts.TWeatherConditions">
+            <view extends="_local">
+                <property name="sampleType" view="_minimal">
+                    <property name="type"/>
+                    <property name="code"/>
+                </property>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="tWeatherConditionsDc">
+                <column width="350px">
+                    <textField id="barometricPressureField" property="barometricPressure"/>
+                    <textField id="airHumidityField" property="airHumidity"/>
+                    <textField id="windDirectionField" property="windDirection"/>
+                    <textField id="windVelocityField" property="windVelocity"/>
+                    <textField id="airTemperatureField" property="airTemperature"/>
+                    <textField id="rainfallField" property="rainfall"/>
+                    <textField id="verificationDetailsField" property="verificationDetails"/>
+                    <textField id="terrainFeatureField" property="terrainFeature"/>
+                    <lookupField id="sampleTakenFromField" property="sampleTakenFrom"/>
+                    <textField id="determinedIngredientsField" property="determinedIngredients"/>
+                </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,5 +1,6 @@
 package com.company.arclab.entity.client;
 
+import com.company.arclab.entity.client.acts.TWeatherConditions;
 import com.company.arclab.entity.client.dict.EClientStatus;
 import com.company.arclab.entity.client.dict.EClientType;
 import com.company.arclab.entity.client.dict.ESex;
@@ -21,6 +22,9 @@ public class Identity extends StandardEntity {
 
     @Column(name = "IIN_BIN")
     private String iinBin;
+
+    @OneToMany(mappedBy = "identity")
+    private List<TWeatherConditions> tWeatherMeasurements;
 
     @Column(name = "FULL_NAME")
     private String fullName;
@@ -75,6 +79,14 @@ public class Identity extends StandardEntity {
     @OneToMany(mappedBy = "identity")
     @Composition
     private List<TIdentDoc> identDocs;
+
+    public List<TWeatherConditions> gettWeatherMeasurements() {
+        return tWeatherMeasurements;
+    }
+
+    public void settWeatherMeasurements(List<TWeatherConditions> tWeatherMeasurements) {
+        this.tWeatherMeasurements = tWeatherMeasurements;
+    }
 
     public ESex getSex() {
         return sex == null ? null : ESex.fromId(sex);

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://DSampleTypesBrowse.caption"
+        focusComponent="dSampleTypesesTable"
+        messagesPack="com.company.arclab.web.screens.dsampletypes">
+    <data readOnly="true">
+        <collection id="dSampleTypesesDc"
+                    class="com.company.arclab.entity.client.acts.DSampleTypes">
+            <view extends="_local"/>
+            <loader id="dSampleTypesesDl">
+                <query>
+                    <![CDATA[select e from arclab_DSampleTypes e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="dSampleTypesesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="dSampleTypesesTable"
+                dataLoader="dSampleTypesesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="dSampleTypesesTable"
+                    width="100%"
+                    dataContainer="dSampleTypesesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="type"/>
+                <column id="code"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="dSampleTypesesTable.create"/>
+                <button id="editBtn" action="dSampleTypesesTable.edit"/>
+                <button id="removeBtn" action="dSampleTypesesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

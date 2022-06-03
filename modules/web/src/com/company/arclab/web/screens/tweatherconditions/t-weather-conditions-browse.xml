@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://TWeatherConditionsBrowse.caption"
+        focusComponent="tWeatherConditionsesTable"
+        messagesPack="com.company.arclab.web.screens.tweatherconditions">
+    <data readOnly="true">
+        <collection id="tWeatherConditionsesDc"
+                    class="com.company.arclab.entity.client.acts.TWeatherConditions">
+            <view extends="_local">
+                <property name="sampleType" view="_minimal">
+                    <property name="type"/>
+                    <property name="code"/>
+                </property>
+            </view>
+            <loader id="tWeatherConditionsesDl">
+                <query>
+                    <![CDATA[select e from arclab_TWeatherConditions e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="tWeatherConditionsesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="tWeatherConditionsesTable"
+                dataLoader="tWeatherConditionsesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="tWeatherConditionsesTable"
+                    width="100%"
+                    dataContainer="tWeatherConditionsesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="barometricPressure"/>
+                <column id="airHumidity"/>
+                <column id="windDirection"/>
+                <column id="windVelocity"/>
+                <column id="airTemperature"/>
+                <column id="rainfall"/>
+                <column id="verificationDetails"/>
+                <column id="terrainFeature"/>
+                <column id="sampleTakenFrom"/>
+                <column id="determinedIngredients"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="tWeatherConditionsesTable.create"/>
+                <button id="editBtn" action="tWeatherConditionsesTable.edit"/>
+                <button id="removeBtn" action="tWeatherConditionsesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

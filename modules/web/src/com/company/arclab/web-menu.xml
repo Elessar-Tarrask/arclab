@@ -9,6 +9,9 @@
         <item screen="arclab_IdentityApplication.browse"
               caption="mainMsg://menu_config.arclab_IdentityApplication.browse"/>
         <item screen="arclab_CreateClient" caption="mainMsg://menu_config.arclab_CreateClient"/>
+        <item screen="arclab_DGasAnalyzer.browse" caption="mainMsg://menu_config.arclab_DGasAnalyzer.browse"/>
+        <item screen="arclab_TWeatherConditions.browse"
+              caption="mainMsg://menu_config.arclab_TWeatherConditions.browse"/>
 
     </menu>
     <menu id="contracts" icon="font-icon:FILE_TEXT_O">

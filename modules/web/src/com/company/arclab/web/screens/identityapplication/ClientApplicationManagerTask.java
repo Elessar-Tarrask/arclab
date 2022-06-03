@@ -3,8 +3,10 @@ package com.company.arclab.web.screens.identityapplication;
 import com.company.arclab.entity.application.IdentityApplication;
 import com.company.arclab.entity.client.DocFormed;
 import com.company.arclab.entity.client.Identity;
+import com.company.arclab.entity.client.acts.TWeatherConditions;
 import com.company.arclab.service.BPMNService;
 import com.company.arclab.service.ClientService;
+import com.company.arclab.web.screens.kalkan.KalkanSignaturesListTable;
 import com.haulmont.addon.bproc.web.processform.Outcome;
 import com.haulmont.addon.bproc.web.processform.ProcessForm;
 import com.haulmont.addon.bproc.web.processform.ProcessFormContext;
@@ -12,16 +14,15 @@ import com.haulmont.addon.bproc.web.processform.ProcessVariable;
 import com.haulmont.cuba.core.app.EntitySnapshotService;
 import com.haulmont.cuba.core.entity.EntitySnapshot;
 import com.haulmont.cuba.core.entity.contracts.Id;
-import com.haulmont.cuba.core.global.CommitContext;
-import com.haulmont.cuba.core.global.DataManager;
-import com.haulmont.cuba.core.global.RemoteException;
-import com.haulmont.cuba.core.global.ViewRepository;
+import com.haulmont.cuba.core.global.*;
 import com.haulmont.cuba.gui.Notifications;
 import com.haulmont.cuba.gui.components.Button;
 import com.haulmont.cuba.gui.components.ContentMode;
+import com.haulmont.cuba.gui.components.GroupBoxLayout;
 import com.haulmont.cuba.gui.components.TextArea;
 import com.haulmont.cuba.gui.model.CollectionPropertyContainer;
 import com.haulmont.cuba.gui.model.DataContext;
+import com.haulmont.cuba.gui.model.InstanceContainer;
 import com.haulmont.cuba.gui.model.InstancePropertyContainer;
 import com.haulmont.cuba.gui.screen.EditedEntityContainer;
 import com.haulmont.cuba.gui.screen.LoadDataBeforeShow;
@@ -48,7 +49,7 @@ import java.util.List;
 )
 public class ClientApplicationManagerTask extends StandardEditor<IdentityApplication> {
 
-//    @ProcessVariable(name = "managerComment")
+    //    @ProcessVariable(name = "managerComment")
 //    private TextArea<String> managerComment;
     @ProcessVariable(name = "clientApplication")
     private IdentityApplication application;
@@ -79,6 +80,14 @@ public class ClientApplicationManagerTask extends StandardEditor<IdentityApplica
     private ProcessFormContext processFormContext;
     @Inject
     private TextArea<String> managerComment;
+    @Inject
+    private KalkanSignaturesListTable signatoryListFragment;
+    @Inject
+    private GroupBoxLayout signatoryListGroupBox;
+    @Inject
+    private InstanceContainer<TWeatherConditions> tWeatherConditionsNewDc;
+    @Inject
+    private Metadata metadata;
 
     @Subscribe
     public void onInit(InitEvent event) {
@@ -92,8 +101,17 @@ public class ClientApplicationManagerTask extends StandardEditor<IdentityApplica
             setEntityToEdit(application);
             initTable();
         }
-
     }
+
+    @Subscribe
+    public void onBeforeShow(BeforeShowEvent event) {
+        signatoryListGroupBox.setVisible(signatoryListFragment.getEdsRegistryList().size() != 0);
+
+        if (tWeatherConditionsNewDc.getItemOrNull() == null) {
+            tWeatherConditionsNewDc.setItem(metadata.create(TWeatherConditions.class));
+        }
+    }
+
 
     private void initTable() {
 //                List<BpmCustomResult> results = getOutcomes();

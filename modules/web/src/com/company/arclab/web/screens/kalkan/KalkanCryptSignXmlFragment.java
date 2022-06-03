@@ -408,7 +408,7 @@ public class KalkanCryptSignXmlFragment extends ScreenFragment {
 
     private void sendEventBack(String signAction) {
         events.publish(new UpdateEcpListEvent(this, edsRegistryDc.getItem().getCurrentUser(),
-                edsRegistryDc.getItem(), signAction, edsRegistryDc.getItem().getFileCheckSum()));
+                signAction, edsRegistryDc.getItem().getFileCheckSum()));
     }
 
     private Boolean NotificationsConnectionProc(int code, String connectionResult) {
