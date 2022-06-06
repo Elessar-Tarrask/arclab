@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://TClientAddressBrowse.caption"
+        focusComponent="tClientAddressesTable"
+        messagesPack="com.company.arclab.web.screens.tclientaddress">
+    <data readOnly="true">
+        <collection id="tClientAddressesDc"
+                    class="com.company.arclab.entity.client.TClientAddress">
+            <view extends="_local">
+                <property name="addressType" view="_minimal"/>
+                <property name="country" view="_minimal"/>
+                <property name="region" view="_minimal">
+                    <property name="katoCode"/>
+                </property>
+                <property name="city" view="_minimal">
+                    <property name="katoCode"/>
+                </property>
+                <property name="district" view="_minimal">
+                    <property name="katoCode"/>
+                </property>
+                <property name="locality" view="_minimal">
+                    <property name="katoCode"/>
+                </property>
+            </view>
+            <loader id="tClientAddressesDl">
+                <query>
+                    <![CDATA[select e from jcrm_TClientAdress e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="tClientAddressesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="tClientAddressesTable"
+                dataLoader="tClientAddressesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="tClientAddressesTable"
+                    width="100%"
+                    dataContainer="tClientAddressesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="addressType"/>
+                <column id="addrSerialNumber"/>
+                <column id="fulladdress"/>
+                <column id="country"/>
+                <column id="region"/>
+                <column id="city"/>
+                <column id="cityName"/>
+                <column id="district"/>
+                <column id="locality"/>
+                <column id="streetName"/>
+                <column id="houseNumber"/>
+                <column id="zipCode"/>
+                <column id="priznOsn"/>
+                <column id="number"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="tClientAddressesTable.create"/>
+                <button id="editBtn" action="tClientAddressesTable.edit"/>
+                <button id="removeBtn" action="tClientAddressesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

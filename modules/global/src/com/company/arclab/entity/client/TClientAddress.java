@@ -6,7 +6,12 @@ import com.company.arclab.entity.kato.DKato;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @NamePattern("%s / %s|addressType,country,region,city,houseNumber,number")
 @Table(name = "JCRM_T_CLIENT_ADRESSES")

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
 
-    <item id="tasks" screen="arclab_IdentityApplication.browse" caption="mainMsg://menu_config.jcrm_TaskApplication.browse" icon="TASKS"/>
+    <item id="tasks" screen="jcrm_Application.browse" caption="mainMsg://menu_config.jcrm_TaskApplication.browse" icon="TASKS"/>
     <item icon="font-icon:USER" screen="arclab_IdentitySerachScreen" caption="mainMsg://menu_config.arclab_Identity.browse"/>
     <menu id="acts" icon="font-icon:CERTIFICATE">
 

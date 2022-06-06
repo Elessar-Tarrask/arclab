@@ -89,7 +89,7 @@ public class ClientAppHeadManager extends StandardEditor<IdentityApplication> {
 
     @Subscribe
     public void onAfterShow(AfterShowEvent event) {
-        if (formedDocsDc.getMutableItems().size() > 0 && formedDocsDc.getMutableItems().get(0).getDocFile() != null)
+        if (!formedDocsDc.getMutableItems().isEmpty() && formedDocsDc.getMutableItems().get(0).getDocFile() != null)
             signatoryListFragment.setEntityId(setFileDescriptor(formedDocsDc.getMutableItems().get(0).getDocFile()));
     }
 

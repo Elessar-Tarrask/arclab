@@ -35,6 +35,9 @@ import com.haulmont.cuba.gui.util.OperationResult;
 import org.slf4j.Logger;
 
 import javax.inject.Inject;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 @UiController("arclab_ClientApplicationManagerTask")
@@ -88,6 +91,8 @@ public class ClientApplicationManagerTask extends StandardEditor<IdentityApplica
     private InstanceContainer<TWeatherConditions> tWeatherConditionsNewDc;
     @Inject
     private Metadata metadata;
+    @Inject
+    private CollectionPropertyContainer<TWeatherConditions> tWeatherMeasurementsDc;
 
     @Subscribe
     public void onInit(InitEvent event) {
@@ -219,6 +224,21 @@ public class ClientApplicationManagerTask extends StandardEditor<IdentityApplica
             log.error(e.getMessage(), e);
         }
         return null;
+    }
+
+    @Subscribe("createButton")
+    public void onCreateButtonClick(Button.ClickEvent event) {
+        TWeatherConditions tWeatherConditions = tWeatherConditionsNewDc.getItem();
+        tWeatherConditions.setIdentity(getEditedEntity().getIdentity());
+        tWeatherConditions.setTakenDate(convertToLocalDateTimeViaInstant(new Date()));
+        tWeatherMeasurementsDc.getMutableItems().add(tWeatherConditions);
+        tWeatherConditionsNewDc.setItem(metadata.create(TWeatherConditions.class));
+    }
+
+    public LocalDateTime convertToLocalDateTimeViaInstant(Date dateToConvert) {
+        return dateToConvert.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDateTime();
     }
 
 }

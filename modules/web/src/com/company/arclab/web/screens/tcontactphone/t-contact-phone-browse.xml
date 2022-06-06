@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://TContactPhoneBrowse.caption"
+        focusComponent="tContactPhonesTable"
+        messagesPack="com.company.arclab.web.screens.tcontactphone">
+    <data readOnly="true">
+        <collection id="tContactPhonesDc"
+                    class="com.company.arclab.entity.client.TContactPhone">
+            <view extends="_local">
+                <property name="contactType" view="_minimal"/>
+                <property name="contactKind" view="_minimal"/>
+            </view>
+            <loader id="tContactPhonesDl">
+                <query>
+                    <![CDATA[select e from jcrm_TContactPhone e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="tContactPhonesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="tContactPhonesTable"
+                dataLoader="tContactPhonesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="tContactPhonesTable"
+                    width="100%"
+                    dataContainer="tContactPhonesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="phoneSerialNumber"/>
+                <column id="phone"/>
+                <column id="contactName"/>
+                <column id="contactType"/>
+                <column id="contactKind"/>
+                <column id="internalPhone"/>
+                <column id="isMain"/>
+                <column id="note"/>
+                <column id="isAddedByContactCenter"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="tContactPhonesTable.create"/>
+                <button id="editBtn" action="tContactPhonesTable.edit"/>
+                <button id="removeBtn" action="tContactPhonesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

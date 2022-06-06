@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://TClientAddressEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.arclab.web.screens.tclientaddress">
+    <data>
+        <instance id="tClientAddressDc"
+                  class="com.company.arclab.entity.client.TClientAddress">
+            <view extends="_local">
+                <property name="addressType" view="_minimal"/>
+                <property name="country" view="_minimal"/>
+                <property name="region" view="_minimal">
+                    <property name="katoCode"/>
+                </property>
+                <property name="city" view="_minimal">
+                    <property name="katoCode"/>
+                </property>
+                <property name="district" view="_minimal">
+                    <property name="katoCode"/>
+                </property>
+                <property name="locality" view="_minimal">
+                    <property name="katoCode"/>
+                </property>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="tClientAddressDc">
+                <column width="350px">
+                    <pickerField id="addressTypeField" property="addressType">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <textField id="addrSerialNumberField" property="addrSerialNumber"/>
+                    <textField id="fulladdressField" property="fulladdress"/>
+                    <pickerField id="countryField" property="country">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <pickerField id="regionField" property="region">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <pickerField id="cityField" property="city">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <textField id="cityNameField" property="cityName"/>
+                    <pickerField id="districtField" property="district">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <pickerField id="localityField" property="locality">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <textField id="streetNameField" property="streetName"/>
+                    <textField id="houseNumberField" property="houseNumber"/>
+                    <textField id="zipCodeField" property="zipCode"/>
+                    <checkBox id="priznOsnField" property="priznOsn"/>
+                    <textField id="numberField" property="number"/>
+                </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

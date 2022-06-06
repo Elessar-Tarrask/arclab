@@ -31,6 +31,7 @@
                     <textField id="terrainFeatureField" property="terrainFeature"/>
                     <lookupField id="sampleTakenFromField" property="sampleTakenFrom"/>
                     <textField id="determinedIngredientsField" property="determinedIngredients"/>
+                    <dateField id="takenDateField" property="takenDate" enable="false"/>
                 </column>
             </form>
         </scrollBox>

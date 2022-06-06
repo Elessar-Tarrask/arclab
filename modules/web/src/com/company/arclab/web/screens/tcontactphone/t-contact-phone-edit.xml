@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://TContactPhoneEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.arclab.web.screens.tcontactphone">
+    <data>
+        <instance id="tContactPhoneDc"
+                  class="com.company.arclab.entity.client.TContactPhone">
+            <view extends="_local">
+                <property name="contactType" view="_minimal"/>
+                <property name="contactKind" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="tContactPhoneDc">
+            <column width="350px">
+                <textField id="phoneSerialNumberField" property="phoneSerialNumber"/>
+                <textField id="phoneField" property="phone"/>
+                <textField id="contactNameField" property="contactName"/>
+                <pickerField id="contactTypeField" property="contactType">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <pickerField id="contactKindField" property="contactKind">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="internalPhoneField" property="internalPhone"/>
+                <checkBox id="isMainField" property="isMain"/>
+                <textField id="noteField" property="note"/>
+                <checkBox id="isAddedByContactCenterField" property="isAddedByContactCenter"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -2,15 +2,23 @@ package com.company.arclab.entity.client.acts;
 
 import com.company.arclab.entity.application.EApplicationStatus;
 import com.company.arclab.entity.client.Identity;
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Table(name = "ARCLAB_T_WEATHER_CONDITIONS")
 @Entity(name = "arclab_TWeatherConditions")
+@NamePattern("%s %s|identity,takenDate")
 public class TWeatherConditions extends StandardEntity {
     private static final long serialVersionUID = -2815443321546144727L;
 
@@ -56,6 +64,7 @@ public class TWeatherConditions extends StandardEntity {
 
     @Column(name = "DETERMINED_INGREDIENTS")
     private String determinedIngredients;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IDENTITY_ID")
     private Identity identity;

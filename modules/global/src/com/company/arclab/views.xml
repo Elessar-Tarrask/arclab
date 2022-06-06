@@ -74,6 +74,25 @@
             <property name="isDefault"/>
             <property name="isArchival"/>
         </property>
+        <property name="tWeatherMeasurements" view="_minimal">
+            <property name="barometricPressure"/>
+            <property name="airHumidity"/>
+            <property name="windDirection"/>
+            <property name="windVelocity"/>
+            <property name="airTemperature"/>
+            <property name="rainfall"/>
+            <property name="sampleType" view="_minimal">
+                <property name="type"/>
+                <property name="code"/>
+            </property>
+            <property name="verificationDetails"/>
+            <property name="terrainFeature"/>
+            <property name="sampleTakenFrom"/>
+            <property name="takenDate"/>
+            <property name="expiratoryDate"/>
+            <property name="measureStatus"/>
+            <property name="determinedIngredients"/>
+        </property>
     </view>
     <view entity="arclab_IdentityApplication" name="identityApplication-view" extends="_local" systemProperties="true">
         <property name="manager" view="_minimal">
@@ -141,5 +160,9 @@
             <property name="endDate"/>
             <property name="sysTenantId"/>
         </property>
+    </view>
+    <view entity="arclab_IdentityApplication" name="application-task" extends="_base" systemProperties="true">
+        <property name="identity" view="_minimal"/>
+        <property name="manager" view="_minimal"/>
     </view>
 </views>

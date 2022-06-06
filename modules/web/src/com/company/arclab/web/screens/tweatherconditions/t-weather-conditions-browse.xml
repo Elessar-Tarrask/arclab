@@ -12,6 +12,7 @@
                     <property name="type"/>
                     <property name="code"/>
                 </property>
+                <property name="identity" view="_minimal"/>
             </view>
             <loader id="tWeatherConditionsesDl">
                 <query>
@@ -48,6 +49,8 @@
                 <column id="terrainFeature"/>
                 <column id="sampleTakenFrom"/>
                 <column id="determinedIngredients"/>
+                <column id="identity"/>
+                <column id="takenDate"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

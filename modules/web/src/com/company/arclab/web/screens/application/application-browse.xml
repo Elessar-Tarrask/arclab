@@ -5,50 +5,53 @@
         focusComponent="applicationsTable"
         messagesPack="com.company.arclab.web.screens.application">
     <data readOnly="true">
-        <collection id="applicationsDc"
-                    class="com.company.arclab.entity.client.Application">
-            <view extends="_local"/>
-            <loader id="applicationsDl">
+        <collection id="myApplicationTaskItemDc"
+                    class="com.company.arclab.entity.application.MyApplicationTaskItem">
+        </collection>
+        <collection id="clientAppDc"
+                    class="com.company.arclab.entity.application.IdentityApplication"
+                    view="identityApplication-view">
+            <loader id="clientAppDl">
                 <query>
-                    <![CDATA[select e from jcrm_Application e]]>
+                    <![CDATA[select e from arclab_IdentityApplication e order by e.reqId DESC]]>
                 </query>
             </loader>
         </collection>
     </data>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="applicationsTable"
-            spacing="true">
-        <filter id="filter"
-                applyTo="applicationsTable"
-                dataLoader="applicationsDl">
-            <properties include=".*"/>
-        </filter>
+    <layout spacing="true" expand="applicationsTable">
+        <label id="page"/>
+        <hbox id="filterBox" spacing="true">
+            <textField id="iinBin" caption="ИИН/БИН"/>
+            <textField id="reqIdField" caption="Номер заявки" datatype="long"/>
+            <lookupField id="type" caption="Тип заявки"/>
+            <lookupField id="task" caption="Задача"/>
+            <button id="search" caption="Поиск" align="BOTTOM_CENTER"/>
+        </hbox>
         <groupTable id="applicationsTable"
                     width="100%"
-                    dataContainer="applicationsDc">
+                    dataContainer="myApplicationTaskItemDc">
             <actions>
-                <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
-                <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="name"/>
-                <column id="isJB"/>
-                <column id="reqId"/>
-                <column id="procId"/>
-                <column id="info"/>
-                <column id="applicationStatus"/>
-                <column id="iinBin"/>
-                <column id="fullName"/>
-                <column id="dateOfCompletion"/>
+                <column id="application.reqId"/>
+                <column id="taskName"/>
+                <column id="taskDate"/>
+                <column id="applicationType"/>
+                <column id="application.iinBin"/>
+                <column id="application.applicationStatus"/>
+                <column id="application.manager"/>
+                <column id="application.info"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="applicationsTable.create"/>
-                <button id="editBtn" action="applicationsTable.edit"/>
-                <button id="removeBtn" action="applicationsTable.remove"/>
+                <button id="prev" icon="ARROW_LEFT" caption="Пред. страница"/>
+                <button id="next" icon="ARROW_RIGHT" caption="След. страница"/>
+                <button id="editBtn" action="applicationsTable.edit"
+                        caption="&#1054;&#1090;&#1082;&#1088;&#1099;&#1090;&#1100;"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

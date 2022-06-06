@@ -24,18 +24,18 @@ public class IdentityApplicationBrowse extends StandardLookup<IdentityApplicatio
     @Inject
     private DataManager dataManager;
 
-    @Install(to = "identityApplicationsDl", target = Target.DATA_LOADER)
-    private List<IdentityApplication> identityApplicationsDlLoadDelegate(LoadContext<IdentityApplication> loadContext) {
-        TManager tManager = dataManager.load(TManager.class)
-                .query("select m from arclab_TManager m where m.login = :login")
-                .parameter("login", "manager")
-                .one();
-        return dataManager.load(IdentityApplication.class)
-                .query("select a from arclab_IdentityApplication a where a.manager = :manager")
-                .parameter("manager", tManager)
-                .view("identityApplication-view")
-                .list();
-    }
+//    @Install(to = "identityApplicationsDl", target = Target.DATA_LOADER)
+//    private List<IdentityApplication> identityApplicationsDlLoadDelegate(LoadContext<IdentityApplication> loadContext) {
+//        TManager tManager = dataManager.load(TManager.class)
+//                .query("select m from arclab_TManager m where m.login = :login")
+//                .parameter("login", )
+//                .one();
+//        return dataManager.load(IdentityApplication.class)
+//                .query("select a from arclab_IdentityApplication a where a.manager = :manager")
+//                .parameter("manager", tManager)
+//                .view("identityApplication-view")
+//                .list();
+//    }
     
     
 }

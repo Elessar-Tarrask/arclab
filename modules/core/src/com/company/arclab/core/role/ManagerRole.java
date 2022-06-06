@@ -1,10 +1,16 @@
 package com.company.arclab.core.role;
 
+import com.company.arclab.entity.application.Application;
 import com.company.arclab.entity.application.IdentityApplication;
+import com.company.arclab.entity.client.DocFormed;
 import com.company.arclab.entity.client.Identity;
+import com.company.arclab.entity.client.TClientAddress;
+import com.company.arclab.entity.client.TContactPhone;
 import com.company.arclab.entity.client.TManager;
+import com.company.arclab.entity.client.acts.TWeatherConditions;
 import com.haulmont.cuba.security.app.role.AnnotatedRoleDefinition;
 import com.haulmont.cuba.security.app.role.annotation.EntityAccess;
+import com.haulmont.cuba.security.app.role.annotation.EntityAttributeAccess;
 import com.haulmont.cuba.security.app.role.annotation.Role;
 import com.haulmont.cuba.security.app.role.annotation.ScreenAccess;
 import com.haulmont.cuba.security.entity.EntityOp;
@@ -37,15 +43,28 @@ public class ManagerRole extends AnnotatedRoleDefinition {
         return super.screenPermissions();
     }
 
+
+    @EntityAttributeAccess(entityClass = Application.class, modify = "*")
+    @EntityAttributeAccess(entityClass = IdentityApplication.class, modify = "*")
+    @EntityAttributeAccess(entityClass = TManager.class, modify = "*")
+    @EntityAttributeAccess(entityClass = Identity.class, modify = "*")
+    @EntityAttributeAccess(entityClass = TWeatherConditions.class, modify = "*")
+    @EntityAttributeAccess(entityClass = TClientAddress.class, modify = "*")
+    @EntityAttributeAccess(entityClass = TContactPhone.class, modify = "*")
+    @EntityAttributeAccess(entityClass = DocFormed.class, modify = "*")
     @Override
     public EntityAttributePermissionsContainer entityAttributePermissions() {
         return super.entityAttributePermissions();
     }
 
-    @EntityAccess(entityClass = IdentityApplication.class, operations = {EntityOp.READ, EntityOp.UPDATE})
-    @EntityAccess(entityClass = TManager.class, operations = {EntityOp.READ, EntityOp.UPDATE})
+    @EntityAccess(entityClass = IdentityApplication.class, operations = {EntityOp.CREATE, EntityOp.READ, EntityOp.UPDATE})
+    @EntityAccess(entityClass = TManager.class, operations = {EntityOp.CREATE, EntityOp.READ, EntityOp.UPDATE})
     @EntityAccess(entityClass = FilterEntity.class, operations = {EntityOp.CREATE, EntityOp.READ, EntityOp.UPDATE, EntityOp.DELETE})
-    @EntityAccess(entityClass = Identity.class, operations = {EntityOp.READ, EntityOp.UPDATE})
+    @EntityAccess(entityClass = Identity.class, operations = {EntityOp.CREATE, EntityOp.READ, EntityOp.UPDATE})
+    @EntityAccess(entityClass = TClientAddress.class, operations = {EntityOp.CREATE, EntityOp.READ, EntityOp.UPDATE})
+    @EntityAccess(entityClass = TWeatherConditions.class, operations = {EntityOp.CREATE, EntityOp.READ, EntityOp.UPDATE})
+    @EntityAccess(entityClass = TContactPhone.class, operations = {EntityOp.CREATE, EntityOp.READ, EntityOp.UPDATE})
+    @EntityAccess(entityClass = DocFormed.class, operations = {EntityOp.CREATE, EntityOp.READ, EntityOp.UPDATE})
     @Override
     public EntityPermissionsContainer entityPermissions() {
         return super.entityPermissions();

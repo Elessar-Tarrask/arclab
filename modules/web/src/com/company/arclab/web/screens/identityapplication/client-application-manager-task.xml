@@ -208,7 +208,7 @@
                     </tab>
                 </tabSheet>
             </scrollBox>
-            <vbox id="editActions" spacing="true" align="BOTTOM_CENTER">
+            <vbox id="mainEditActions" spacing="true" align="BOTTOM_CENTER">
                 <textArea id="managerComment" caption="msg://managerComment" width="80%"/>
                 <buttonsPanel>
                     <button id="sendToApproval" stylename="primary" caption="msg://sendToApproval"/>
