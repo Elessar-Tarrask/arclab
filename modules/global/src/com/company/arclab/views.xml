@@ -165,4 +165,10 @@
         <property name="identity" view="_minimal"/>
         <property name="manager" view="_minimal"/>
     </view>
+    <view entity="arclab_EdsRegistry" name="edsRegistry-view_1" extends="_base">
+        <property name="fileToSign" view="_local"/>
+    </view>
+    <view entity="arclab_EdsRegistry" name="edsRegistry-view_2" extends="edsRegistry-view_1">
+        <property name="currentUser" view="_local"/>
+    </view>
 </views>

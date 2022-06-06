@@ -38,16 +38,16 @@
                     </form>
                 </hbox>
                 <buttonsPanel id="tempSaveBtnPnl" spacing="true">
-                    <button id="saveTemp" caption="Сохранить и выйти" primary="true"/>
+                    <button id="close" caption="выйти" primary="true"/>
                 </buttonsPanel>
             </groupBox>
             <!--        <button id="updateButton" caption="Обновить"/>-->
-            <groupBox caption="Лист подписей"
-                      collapsable="true"
-                      spacing="true"
-                      showAsPanel="true">
-                <fragment enable="false" id="signatoryListFragment" screen="arclab_KalkanSignaturesListTable"/>
-            </groupBox>
+<!--            <groupBox caption="Лист подписей"-->
+<!--                      collapsable="true"-->
+<!--                      spacing="true"-->
+<!--                      showAsPanel="true">-->
+<!--                <fragment enable="false" id="signatoryListFragment" screen="arclab_KalkanSignaturesListTable"/>-->
+<!--            </groupBox>-->
             <scrollBox id="scrollBox" spacing="true">
                 <tabSheet id="mainTabSheet" stylename="padded-tabbar">
                     <tab id="clientDataTab" caption="Клиент" spacing="true"
@@ -162,9 +162,7 @@
                                   caption="Идентификационные документы">
                             <table id="formedDocsTable" dataContainer="formedDocsDc" width="100%" height="200px">
                                 <actions>
-                                    <action id="create" type="create"/>
-                                    <action id="edit" type="edit"/>
-                                    <action id="remove" type="remove"/>
+                                    <action id="view" type="view"/>
                                 </actions>
                                 <columns>
                                     <column id="application"/>
@@ -172,9 +170,7 @@
                                     <column id="docFile"/>
                                 </columns>
                                 <buttonsPanel>
-                                    <button action="formedDocsTable.create"/>
-                                    <button action="formedDocsTable.edit"/>
-                                    <button action="formedDocsTable.remove"/>
+                                    <button action="formedDocsTable.view"/>
                                 </buttonsPanel>
                             </table>
                         </groupBox>

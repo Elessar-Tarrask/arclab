@@ -30,6 +30,13 @@
                 width="800"/>
     <layout expand="scrollBox" spacing="true">
         <scrollBox id="scrollBox" spacing="true">
+            <groupBox id="signatoryListGroupBox"
+                      caption="Лист подписей"
+                      collapsable="false"
+                      spacing="true"
+                      showAsPanel="true">
+                <fragment id="signatoryListFragment" screen="arclab_KalkanSignaturesListTable"/>
+            </groupBox>
             <fragment id="bpmPanelFragment" screen="arclab_BpmPanelCustomFragment" width="100%"/>
             <form id="form" dataContainer="identityApplicationDc">
                 <column width="350px">
@@ -51,7 +58,7 @@
                 </column>
             </form>
             <groupBox id="formedDocsBox"
-                      caption="msg://com.company.arclab.entity.application/IdentityApplication.formedDocs">
+                      caption="Прикрепленные документы">
                 <table id="formedDocsTable" dataContainer="formedDocsDc" width="100%" height="200px">
                     <actions>
                         <action id="create" type="create"/>

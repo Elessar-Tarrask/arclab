@@ -200,5 +200,25 @@ task restart(dependsOn: ['stop', ":${modulePrefix}-core:deploy", ":${modulePrefi
         }
     }
 }
+//task buildUberJar(type: CubaUberJarBuilding) {
+//    appProperties = ['cuba.automaticDatabaseUpdate': true,
+//                     'cuba.dataSourceProvider'     : 'jndi']
+//    logbackConfigurationFile = 'etc/uber-jar-logback.xml'
+//    singleJar = true
+//    coreJettyEnvPath = 'modules/core/web/META-INF/jetty-env.xml'
+//    webJettyConfPath = 'jetty.xml'
+//}
+//
+//task buildWar(type: CubaWarBuilding) {
+//    singleWar = true
+//    includeContextXml = true
+//    includeJdbcDriver = true
+//    webXmlPath = 'modules/web/web/WEB-INF/single-war-web.xml'
+//    appProperties = [
+//            'cuba.automaticDatabaseUpdate': true,
+//            'cuba.webPort'                : 8080,
+//            'cuba.connectionUrlList'      : 'http://localhost:8080/app-core'
+//    ]
+//}
 restart.finalizedBy start
 

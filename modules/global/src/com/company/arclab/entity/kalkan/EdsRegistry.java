@@ -6,7 +6,16 @@ import com.haulmont.cuba.core.entity.FileDescriptor;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.security.entity.User;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import java.util.Date;
 
 @Table(name = "ARCLAB_EDS_REGISTRY")
@@ -18,6 +27,10 @@ public class EdsRegistry extends StandardEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FILE_TO_SIGN_ID")
     private FileDescriptor fileToSign;
+
+    @MetaProperty(datatype = "EntitySoftReference")
+    @Column(name = "ENTITY")
+    private com.haulmont.cuba.core.entity.Entity entity;
 
     @Column(name = "SIGN_ACTION")
     private String signAction;
@@ -53,6 +66,14 @@ public class EdsRegistry extends StandardEntity {
     @MetaProperty
     @Transient
     private String signErrorMessage;
+
+    public com.haulmont.cuba.core.entity.Entity getEntity() {
+        return entity;
+    }
+
+    public void setEntity(com.haulmont.cuba.core.entity.Entity entity) {
+        this.entity = entity;
+    }
 
     public String getSignAction() {
         return signAction;

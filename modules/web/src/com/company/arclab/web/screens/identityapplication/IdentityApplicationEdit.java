@@ -1,8 +1,12 @@
 package com.company.arclab.web.screens.identityapplication;
 
 import com.company.arclab.entity.application.EClientApplicationType;
+import com.company.arclab.entity.client.DocFormed;
 import com.company.arclab.web.screens.BpmPanelCustomFragment;
+import com.company.arclab.web.screens.kalkan.KalkanSignaturesListTable;
 import com.haulmont.cuba.core.global.DataManager;
+import com.haulmont.cuba.gui.components.GroupBoxLayout;
+import com.haulmont.cuba.gui.model.CollectionPropertyContainer;
 import com.haulmont.cuba.gui.model.InstanceContainer;
 import com.haulmont.cuba.gui.screen.*;
 import com.company.arclab.entity.application.IdentityApplication;
@@ -25,6 +29,12 @@ public class IdentityApplicationEdit extends StandardEditor<IdentityApplication>
     private InstanceContainer<IdentityApplication> identityApplicationDc;
     @Inject
     private BpmPanelCustomFragment bpmPanelFragment;
+    @Inject
+    private KalkanSignaturesListTable signatoryListFragment;
+    @Inject
+    private GroupBoxLayout signatoryListGroupBox;
+    @Inject
+    private CollectionPropertyContainer<DocFormed> formedDocsDc;
 
     private void setBpmAction() {
         if (EClientApplicationType.CREATE == getEditedEntity().getApplicationType())
@@ -35,6 +45,8 @@ public class IdentityApplicationEdit extends StandardEditor<IdentityApplication>
 
     @Subscribe
     public void onBeforeShow(BeforeShowEvent event) {
+        //signatoryListGroupBox.setVisible(formedDocsDc.getMutableItems().isEmpty());
+
         setBpmAction();
     }
 
@@ -49,5 +61,10 @@ public class IdentityApplicationEdit extends StandardEditor<IdentityApplication>
             application = dataManager.reload(application, "identityApplication-view");
             identityApplicationDc.setItem(application);
         }
+    }
+
+    @Subscribe
+    public void onAfterShow(AfterShowEvent event) {
+        signatoryListFragment.setEntityId(getEditedEntity().getIdentity());
     }
 }

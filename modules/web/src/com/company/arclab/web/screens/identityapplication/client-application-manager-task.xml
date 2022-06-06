@@ -42,13 +42,6 @@
                     <button id="saveTemp" caption="Сохранить и выйти" primary="true"/>
                 </buttonsPanel>
             </groupBox>
-            <groupBox id="signatoryListGroupBox"
-                      caption="Лист подписей"
-                      collapsable="true"
-                      spacing="true"
-                      showAsPanel="true">
-                <fragment id="signatoryListFragment" screen="arclab_KalkanSignaturesListTable"/>
-            </groupBox>
             <scrollBox id="scrollBox" spacing="true">
                 <tabSheet id="mainTabSheet" stylename="padded-tabbar">
                     <tab id="clientDataTab" caption="Клиент" spacing="true"

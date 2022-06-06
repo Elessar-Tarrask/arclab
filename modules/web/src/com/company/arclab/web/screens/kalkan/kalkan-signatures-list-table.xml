@@ -3,7 +3,7 @@
     <data>
         <collection id="edsRegistryDc"
                     class="com.company.arclab.entity.kalkan.EdsRegistry"
-                    view="_base">
+                    view="edsRegistry-view_2">
             <loader id="edsRegistryDl"/>
         </collection>
     </data>

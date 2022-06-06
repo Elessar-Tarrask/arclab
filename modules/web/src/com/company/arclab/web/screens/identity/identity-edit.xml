@@ -19,6 +19,13 @@
                 width="800"/>
     <layout expand="scrollBox" spacing="true">
         <scrollBox id="scrollBox" spacing="true">
+            <groupBox id="signatoryListGroupBox"
+                      caption="Лист подписей"
+                      collapsable="false"
+                      spacing="true"
+                      showAsPanel="true">
+                <fragment id="signatoryListFragment" screen="arclab_KalkanSignaturesListTable"/>
+            </groupBox>
             <hbox spacing="true" width="AUTO">
                 <form id="form" dataContainer="identityDc">
                     <column width="350px">
@@ -35,157 +42,6 @@
                     </column>
                 </form>
             </hbox>
-            <groupBox id="registerDocsBox" caption="msg://com.company.arclab.entity.client/Identity.registerDocs">
-                <table id="registerDocsTable" dataContainer="registerDocsDc" width="100%" height="200px">
-                    <actions>
-                        <action id="create" type="create"/>
-                        <action id="edit" type="edit"/>
-                        <action id="remove" type="remove"/>
-                    </actions>
-                    <columns>
-                        <column id="docNum"/>
-                        <column id="createTs"/>
-                        <column id="docType"/>
-                        <column id="license"/>
-                        <column id="tax"/>
-                        <column id="longname"/>
-                        <column id="firstRegDate"/>
-                        <column id="regDate"/>
-                        <column id="regOrf"/>
-                        <column id="regCountry"/>
-                        <column id="licenseNumber"/>
-                        <column id="licenseDate"/>
-                        <column id="licenseValidDate"/>
-                        <column id="licenseOrg"/>
-                        <column id="issueDate"/>
-                        <column id="validDate"/>
-                        <column id="issueOrg"/>
-                        <column id="code"/>
-                        <column id="nord"/>
-                        <column id="ser"/>
-                        <column id="num"/>
-                        <column id="dtFrom"/>
-                        <column id="dtTo"/>
-                        <column id="arcfl"/>
-                        <column id="org"/>
-                        <column id="regnum"/>
-                        <column id="regdt"/>
-                    </columns>
-                    <buttonsPanel>
-                        <button action="registerDocsTable.create"/>
-                        <button action="registerDocsTable.edit"/>
-                        <button action="registerDocsTable.remove"/>
-                    </buttonsPanel>
-                </table>
-            </groupBox>
-            <groupBox id="contactsAdressesBox"
-                      caption="msg://com.company.arclab.entity.client/Identity.contactsAdresses">
-                <table id="contactsAdressesTable" dataContainer="contactsAdressesDc" width="100%" height="200px">
-                    <actions>
-                        <action id="create" type="create"/>
-                        <action id="edit" type="edit"/>
-                        <action id="remove" type="remove"/>
-                    </actions>
-                    <columns>
-                        <column id="addressType"/>
-                        <column id="country"/>
-                        <column id="region"/>
-                        <column id="city"/>
-                        <column id="houseNumber"/>
-                        <column id="number"/>
-                        <column id="addrSerialNumber"/>
-                        <column id="fulladdress"/>
-                        <column id="cityName"/>
-                        <column id="district"/>
-                        <column id="locality"/>
-                        <column id="streetName"/>
-                        <column id="zipCode"/>
-                        <column id="priznOsn"/>
-                    </columns>
-                    <buttonsPanel>
-                        <button action="contactsAdressesTable.create"/>
-                        <button action="contactsAdressesTable.edit"/>
-                        <button action="contactsAdressesTable.remove"/>
-                    </buttonsPanel>
-                </table>
-            </groupBox>
-            <groupBox id="phonesBox" caption="msg://com.company.arclab.entity.client/Identity.phones">
-                <table id="phonesTable" dataContainer="phonesDc" width="100%" height="200px">
-                    <actions>
-                        <action id="create" type="create"/>
-                        <action id="edit" type="edit"/>
-                        <action id="remove" type="remove"/>
-                    </actions>
-                    <columns>
-                        <column id="phone"/>
-                        <column id="phoneSerialNumber"/>
-                        <column id="contactName"/>
-                        <column id="contactType"/>
-                        <column id="contactKind"/>
-                        <column id="internalPhone"/>
-                        <column id="isMain"/>
-                        <column id="note"/>
-                        <column id="isAddedByContactCenter"/>
-                    </columns>
-                    <buttonsPanel>
-                        <button action="phonesTable.create"/>
-                        <button action="phonesTable.edit"/>
-                        <button action="phonesTable.remove"/>
-                    </buttonsPanel>
-                </table>
-            </groupBox>
-            <groupBox id="emailsBox" caption="msg://com.company.arclab.entity.client/Identity.emails">
-                <table id="emailsTable" dataContainer="emailsDc" width="100%" height="200px">
-                    <actions>
-                        <action id="create" type="create"/>
-                        <action id="edit" type="edit"/>
-                        <action id="remove" type="remove"/>
-                    </actions>
-                    <columns>
-                        <column id="phone"/>
-                        <column id="email"/>
-                        <column id="phoneSerialNumber"/>
-                        <column id="contactName"/>
-                        <column id="contactType"/>
-                        <column id="contactKind"/>
-                        <column id="internalPhone"/>
-                        <column id="isMain"/>
-                        <column id="note"/>
-                        <column id="isAddedByContactCenter"/>
-                    </columns>
-                    <buttonsPanel>
-                        <button action="emailsTable.create"/>
-                        <button action="emailsTable.edit"/>
-                        <button action="emailsTable.remove"/>
-                    </buttonsPanel>
-                </table>
-            </groupBox>
-            <groupBox id="identDocsBox" caption="msg://com.company.arclab.entity.client/Identity.identDocs">
-                <table id="identDocsTable" dataContainer="identDocsDc" width="100%" height="200px">
-                    <actions>
-                        <action id="create" type="create"/>
-                        <action id="edit" type="edit"/>
-                        <action id="remove" type="remove"/>
-                    </actions>
-                    <columns>
-                        <column id="type"/>
-                        <column id="number"/>
-                        <column id="createTs"/>
-                        <column id="typeExt"/>
-                        <column id="typeExtCode"/>
-                        <column id="issueDate"/>
-                        <column id="expirationDate"/>
-                        <column id="issuer"/>
-                        <column id="isDefault"/>
-                        <column id="isArchival"/>
-                    </columns>
-                    <buttonsPanel>
-                        <button action="identDocsTable.create"/>
-                        <button action="identDocsTable.edit"/>
-                        <button action="identDocsTable.remove"/>
-                    </buttonsPanel>
-                </table>
-            </groupBox>
         </scrollBox>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>

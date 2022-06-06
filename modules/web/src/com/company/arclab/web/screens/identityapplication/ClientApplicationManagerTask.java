@@ -84,10 +84,6 @@ public class ClientApplicationManagerTask extends StandardEditor<IdentityApplica
     @Inject
     private TextArea<String> managerComment;
     @Inject
-    private KalkanSignaturesListTable signatoryListFragment;
-    @Inject
-    private GroupBoxLayout signatoryListGroupBox;
-    @Inject
     private InstanceContainer<TWeatherConditions> tWeatherConditionsNewDc;
     @Inject
     private Metadata metadata;
@@ -110,8 +106,6 @@ public class ClientApplicationManagerTask extends StandardEditor<IdentityApplica
 
     @Subscribe
     public void onBeforeShow(BeforeShowEvent event) {
-        signatoryListGroupBox.setVisible(signatoryListFragment.getEdsRegistryList().size() != 0);
-
         if (tWeatherConditionsNewDc.getItemOrNull() == null) {
             tWeatherConditionsNewDc.setItem(metadata.create(TWeatherConditions.class));
         }

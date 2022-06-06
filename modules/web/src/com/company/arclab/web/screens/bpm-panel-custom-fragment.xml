@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <fragment xmlns="http://schemas.haulmont.com/cuba/screen/fragment.xsd">
     <layout expand="bpmFragmentBox" spacing="true" width="100%">
-        <groupBox id="bpmFragmentBox" showAsPanel="false" caption="msg://bpmPanel" css="min-width: 100%;" collapsable="true" collapsed="true" width="100%">
-            <tabSheet id="bpmTabSheet" width="100%" css="border-bottom: 1px solid var(--primary-dim-color); padding-bottom:5px">
+        <groupBox id="bpmFragmentBox" showAsPanel="false" caption="msg://bpmPanel" css="min-width: 100%;" collapsable="true" collapsed="false" width="100%">
+            <tabSheet id="bpmTabSheet"  width="100%" css="border-bottom: 1px solid var(--primary-dim-color); padding-bottom:5px">
                 <tab id="tabBpm" caption="msg://BPM" spacing="true" expand="bpmTaskDefBox">
                     <vbox id="bpmTaskDefBox" width="100%" margin="true,false,true,false">
                         <buttonsPanel id="buttonsPanel" spacing="true" margin="true, false, false, false"

@@ -4,6 +4,7 @@ import com.company.arclab.entity.application.IdentityApplication;
 import com.company.arclab.entity.client.DocFormed;
 import com.company.arclab.entity.client.Identity;
 import com.company.arclab.entity.client.TManager;
+import com.company.arclab.entity.client.dict.EClientStatus;
 import com.company.arclab.event.UpdateEcpListEvent;
 import com.company.arclab.service.BPMNService;
 import com.company.arclab.web.screens.kalkan.KalkanCryptSignXmlFragment;
@@ -35,6 +36,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.context.event.EventListener;
 
 import javax.inject.Inject;
+import java.util.Objects;
 
 @UiController("arclab_ClientAppHeadManager")
 @UiDescriptor("client-app-head-manager.xml")
@@ -70,8 +72,8 @@ public class ClientAppHeadManager extends StandardEditor<IdentityApplication> {
     private UserSession userSession;
 
     private String chosenAction = null;
-    @Inject
-    private KalkanSignaturesListTable signatoryListFragment;
+//    @Inject
+//    private KalkanSignaturesListTable signatoryListFragment;
     @Inject
     private FileStorageService fileStorageService;
 
@@ -87,35 +89,6 @@ public class ClientAppHeadManager extends StandardEditor<IdentityApplication> {
         }
     }
 
-    @Subscribe
-    public void onAfterShow(AfterShowEvent event) {
-        if (!formedDocsDc.getMutableItems().isEmpty() && formedDocsDc.getMutableItems().get(0).getDocFile() != null)
-            signatoryListFragment.setEntityId(setFileDescriptor(formedDocsDc.getMutableItems().get(0).getDocFile()));
-    }
-
-    public String setFileDescriptor(FileDescriptor fileDescriptor) {
-        byte[] bytes = new byte[0];
-        try {
-            bytes = fileStorageService.loadFile(fileDescriptor);
-        } catch (FileStorageException exception) {
-            showNotification("Проблема с получением файла " + exception.getLocalizedMessage(), Notifications.NotificationType.WARNING);
-        }
-        if (bytes.length > 0) {
-            return getMd5Hash(bytes);
-        }
-        return null;
-    }
-
-    private String getMd5Hash(byte[] bytes) {
-        return DigestUtils
-                .md5Hex(bytes).toUpperCase();
-    }
-
-    private void showNotification(String message, Notifications.NotificationType notificationType) {
-        notifications.create(notificationType)
-                .withCaption(message)
-                .show();
-    }
 
     @Subscribe("rework")
     public void onReworkClick(Button.ClickEvent event) {
@@ -139,7 +112,7 @@ public class ClientAppHeadManager extends StandardEditor<IdentityApplication> {
     public void onAcceptClick(Button.ClickEvent event) {
         chosenAction = "approve";
         ncaLayerFragment.setInfoToSign(formedDocsDc.getMutableItems().get(0).getDocFile(),
-                identityDc.getItemOrNull(), chosenAction, "Согласовано");
+                identityDc.getItem(), chosenAction, "Согласовано");
     }
 
     @EventListener
@@ -147,18 +120,24 @@ public class ClientAppHeadManager extends StandardEditor<IdentityApplication> {
         if (event.getCurrentUser().getLogin() != null) {
             String receiverLogin = event.getCurrentUser().getLogin();
             String currentLogin = userSession.getUser().getLogin();
-            if (receiverLogin.equals(currentLogin) && chosenAction != null && chosenAction == "action") {
+            if (receiverLogin.equals(currentLogin) && "approve".equals(chosenAction)) {
                 finComment.setValue(null);
                 processFormContext.taskCompletion()
                         .withOutcome("Accept")
                         .saveInjectedProcessVariables()
                         .complete();
-                closeWithDiscard();
+                Objects.requireNonNull(identityDc.getItemOrNull()).setStatus(EClientStatus.ACTIVE);
+                closeWithCommit();
             } else {
                 notifications.create().withCaption(messageBundle.getMessage("errorWithECP"))
                         .withType(Notifications.NotificationType.ERROR).show();
             }
         }
+    }
+
+    @Subscribe("close")
+    public void onCloseClick(Button.ClickEvent event) {
+        closeWithDiscard();
     }
 
 }

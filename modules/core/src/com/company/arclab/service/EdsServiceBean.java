@@ -18,10 +18,10 @@ public class EdsServiceBean implements EdsService {
     private KalkanSignVerifyService kalkanSignVerifyService;
 
     @Override
-    public List<EdsRegistry> loadFormDb(String checkSum) {
+    public List<EdsRegistry> loadFormDb(Entity entity) {
         List<EdsRegistry> edsRegistryList = dataManager.load(EdsRegistry.class)
-                .query("select e from arclab_EdsRegistry e where e.fileCheckSum=:checkSum")
-                .parameter("checkSum", checkSum)
+                .query("select e from arclab_EdsRegistry e where e.entity=:entity")
+                .parameter("entity", entity)
                 .view("edsRegistry-view")
                 .list();
         for (int i = 0; i < edsRegistryList.size(); i++) {

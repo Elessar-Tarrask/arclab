@@ -272,7 +272,7 @@ public class KalkanCryptSignXmlFragment extends ScreenFragment {
             getTOfficerDigitalSignInfo();
             edsRegistry.setFileToSign(fileDescriptor);
             edsRegistry.setSignComment(comment);
-            //edsRegistry.setEntity(entity);
+            edsRegistry.setEntity(entity);
             edsRegistry.setSignAction(action);
             edsRegistry.setFileCheckSum(setFileDescriptor(fileDescriptor));
             edsRegistry.setCurrentUser(user);
