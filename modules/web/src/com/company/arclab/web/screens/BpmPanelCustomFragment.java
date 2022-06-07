@@ -8,6 +8,7 @@ import com.company.arclab.service.ApplicationService;
 import com.company.arclab.service.BPMNService;
 import com.company.arclab.service.OfficerService;
 import com.company.arclab.web.screens.application.ApplicationScreen;
+import com.company.arclab.web.screens.identityapplication.IdentityApplicationEdit;
 import com.haulmont.addon.bproc.entity.ExecutionData;
 import com.haulmont.addon.bproc.entity.HistoricActivityInstanceData;
 import com.haulmont.addon.bproc.entity.JobData;
@@ -929,6 +930,11 @@ public class BpmPanelCustomFragment extends ScreenFragment {
             if (!taskOpened) {
                 taskOpened = true;
                 bpmTaskForm.show();
+                try{
+                    ((IdentityApplicationEdit)getHostController()).updateECPListTable();
+                }catch (Exception err){
+                    log.error(err.getLocalizedMessage());
+                }
             }
         } else if (taskData != null && !isCubaScreen(taskData)) {
             Screen bpmTaskForm = processFormScreens.createTaskProcessForm(taskData, this);

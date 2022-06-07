@@ -41,13 +41,6 @@
                     <button id="close" caption="выйти" primary="true"/>
                 </buttonsPanel>
             </groupBox>
-            <!--        <button id="updateButton" caption="Обновить"/>-->
-<!--            <groupBox caption="Лист подписей"-->
-<!--                      collapsable="true"-->
-<!--                      spacing="true"-->
-<!--                      showAsPanel="true">-->
-<!--                <fragment enable="false" id="signatoryListFragment" screen="arclab_KalkanSignaturesListTable"/>-->
-<!--            </groupBox>-->
             <scrollBox id="scrollBox" spacing="true">
                 <tabSheet id="mainTabSheet" stylename="padded-tabbar">
                     <tab id="clientDataTab" caption="Клиент" spacing="true"
@@ -175,8 +168,7 @@
                             </table>
                         </groupBox>
                     </tab>
-                    <tab id="labaratoryOldData" caption="Истекшие Лаб.Пробы">
-                    </tab>
+                    <tab id="labaratoryOldData" caption="Истекшие Лаб.Пробы"/>
                 </tabSheet>
             </scrollBox>
             <vbox id="MainEditActions" spacing="true">

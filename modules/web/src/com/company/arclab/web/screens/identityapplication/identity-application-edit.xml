@@ -6,22 +6,7 @@
     <data>
         <instance id="identityApplicationDc"
                   class="com.company.arclab.entity.application.IdentityApplication">
-            <view extends="_local">
-                <property name="manager" view="_minimal">
-                    <property name="managerNetworkName"/>
-                    <property name="employeeId"/>
-                    <property name="phone"/>
-                    <property name="digitalSign"/>
-                </property>
-                <property name="formedDocs" view="_minimal">
-                    <property name="application" view="_minimal">
-                        <property name="name"/>
-                    </property>
-                    <property name="docType"/>
-                    <property name="docFile" view="_minimal"/>
-                    <property name="docStatus"/>
-                </property>
-            </view>
+            <view extends="identityApplication-view"/>
             <loader/>
             <collection id="formedDocsDc" property="formedDocs"/>
         </instance>
@@ -32,9 +17,10 @@
         <scrollBox id="scrollBox" spacing="true">
             <groupBox id="signatoryListGroupBox"
                       caption="Лист подписей"
-                      collapsable="false"
+                      collapsable="true"
                       spacing="true"
-                      showAsPanel="true">
+                      showAsPanel="true"
+                      collapsed="true">
                 <fragment id="signatoryListFragment" screen="arclab_KalkanSignaturesListTable"/>
             </groupBox>
             <fragment id="bpmPanelFragment" screen="arclab_BpmPanelCustomFragment" width="100%"/>

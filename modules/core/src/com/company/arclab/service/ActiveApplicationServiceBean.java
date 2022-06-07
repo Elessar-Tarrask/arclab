@@ -2,6 +2,7 @@ package com.company.arclab.service;
 
 import com.company.arclab.MyApplicationTaskDto;
 import com.company.arclab.entity.application.Application;
+import com.company.arclab.event.TaskNotificationEvent;
 import com.haulmont.addon.bproc.entity.ProcessInstanceData;
 import com.haulmont.addon.bproc.entity.TaskData;
 import com.haulmont.addon.bproc.entity.UserGroup;
@@ -10,6 +11,7 @@ import com.haulmont.addon.bproc.service.BprocRuntimeService;
 import com.haulmont.addon.bproc.service.BprocTaskService;
 import com.haulmont.addon.bproc.service.UserGroupService;
 import com.haulmont.cuba.core.global.DataManager;
+import com.haulmont.cuba.core.global.Events;
 import com.haulmont.cuba.core.global.RemoteException;
 import com.haulmont.cuba.security.entity.User;
 import org.slf4j.Logger;
@@ -41,6 +43,8 @@ public class ActiveApplicationServiceBean implements ActiveApplicationService {
     private BprocTaskService bprocTaskService;
     @Inject
     private UserGroupService userGroupService;
+    @Inject
+    private Events events;
 
     @Override
     public List<TaskData> getActiveTasks(User user) {
@@ -72,7 +76,12 @@ public class ActiveApplicationServiceBean implements ActiveApplicationService {
 
     @Override
     public void publishTasksCount(User user) {
-
+        List<TaskData> tasks = getActiveTasks(user);
+        long taskCount = 0;
+        long ccTaskCount = 0;
+        if(tasks != null && !tasks.isEmpty())
+            taskCount = tasks.size();
+        events.publish(new TaskNotificationEvent(this, taskCount, ccTaskCount, user));
     }
 
     @Override

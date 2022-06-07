@@ -5,6 +5,7 @@ import com.haulmont.cuba.core.sys.AppContext;
 import com.haulmont.cuba.core.sys.SecurityContext;
 import com.haulmont.cuba.security.auth.events.UserLoggedInEvent;
 import com.haulmont.cuba.security.entity.User;
+import com.haulmont.cuba.security.global.UserSession;
 import org.slf4j.Logger;
 import org.springframework.context.event.EventListener;
 
@@ -26,16 +27,13 @@ public class LoginEventListener {
 
     @EventListener
     public void userLoggedIn(UserLoggedInEvent event) {
-//        final UserSession userSession = event.getUserSession();
-//        if (userSession.isSystem())
-//            return;
-//        AppContext.withSecurityContext(new SecurityContext(userSession), () -> {
-//            User user = event.getUserSession().getUser();
-//            if(!excluded.contains(user.getLogin())) {
-//                //userUpdateService.updateFromEsb(user, user.getLogin());
-//            }
-//            notifyAboutTasks(user);
-//        });
+        final UserSession userSession = event.getUserSession();
+        if (userSession.isSystem())
+            return;
+        AppContext.withSecurityContext(new SecurityContext(userSession), () -> {
+            User user = event.getUserSession().getUser();
+            notifyAboutTasks(user);
+        });
         log.trace("UserLoggen in ", event.getAuthenticationDetails());
     }
 

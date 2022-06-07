@@ -197,8 +197,7 @@
                             </table>
                         </groupBox>
                     </tab>
-                    <tab id="labaratoryOldData" caption="Истекшие Лаб.Пробы">
-                    </tab>
+                    <tab id="labaratoryOldData" caption="Истекшие Лаб.Пробы"/>
                 </tabSheet>
             </scrollBox>
             <vbox id="mainEditActions" spacing="true" align="BOTTOM_CENTER">

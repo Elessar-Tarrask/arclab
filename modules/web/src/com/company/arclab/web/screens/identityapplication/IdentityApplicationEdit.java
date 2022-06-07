@@ -50,6 +50,7 @@ public class IdentityApplicationEdit extends StandardEditor<IdentityApplication>
         setBpmAction();
     }
 
+
     private void preventErrorIfCameFromParentAppScreen() {
         IdentityApplication application = getEditedEntity();
         try {
@@ -65,6 +66,10 @@ public class IdentityApplicationEdit extends StandardEditor<IdentityApplication>
 
     @Subscribe
     public void onAfterShow(AfterShowEvent event) {
+        updateECPListTable();
+    }
+
+    public void updateECPListTable() {
         signatoryListFragment.setEntityId(getEditedEntity().getIdentity());
     }
 }
