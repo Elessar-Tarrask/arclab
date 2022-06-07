@@ -36,6 +36,7 @@ import com.haulmont.cuba.gui.components.RichTextArea;
 import com.haulmont.cuba.gui.components.TabSheet;
 import com.haulmont.cuba.gui.components.TextField;
 import com.haulmont.cuba.gui.components.VBoxLayout;
+import com.haulmont.cuba.gui.components.Window;
 import com.haulmont.cuba.gui.screen.MessageBundle;
 import com.haulmont.cuba.gui.screen.Screen;
 import com.haulmont.cuba.gui.screen.ScreenFragment;
@@ -930,6 +931,7 @@ public class BpmPanelCustomFragment extends ScreenFragment {
             if (!taskOpened) {
                 taskOpened = true;
                 bpmTaskForm.show();
+            }else{
                 try{
                     ((IdentityApplicationEdit)getHostController()).updateECPListTable();
                 }catch (Exception err){

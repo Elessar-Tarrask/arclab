@@ -17,6 +17,7 @@ import com.haulmont.addon.bproc.web.processform.ProcessVariable;
 import com.haulmont.cuba.core.app.FileStorageService;
 import com.haulmont.cuba.core.entity.FileDescriptor;
 import com.haulmont.cuba.core.global.DataManager;
+import com.haulmont.cuba.core.global.Events;
 import com.haulmont.cuba.core.global.FileStorageException;
 import com.haulmont.cuba.gui.Notifications;
 import com.haulmont.cuba.gui.components.Button;
@@ -72,10 +73,12 @@ public class ClientAppHeadManager extends StandardEditor<IdentityApplication> {
     private UserSession userSession;
 
     private String chosenAction = null;
-//    @Inject
+    //    @Inject
 //    private KalkanSignaturesListTable signatoryListFragment;
     @Inject
     private FileStorageService fileStorageService;
+    @Inject
+    private Events events;
 
     @Subscribe
     public void onInit(InitEvent event) {
@@ -117,7 +120,7 @@ public class ClientAppHeadManager extends StandardEditor<IdentityApplication> {
 
     @EventListener
     public void readMessage(UpdateEcpListEvent event) {
-        if (event.getCurrentUser().getLogin() != null) {
+        if (event.getCurrentUser() != null && event.getCurrentUser().getLogin() != null) {
             String receiverLogin = event.getCurrentUser().getLogin();
             String currentLogin = userSession.getUser().getLogin();
             if (receiverLogin.equals(currentLogin) && "approve".equals(chosenAction)) {
@@ -127,6 +130,9 @@ public class ClientAppHeadManager extends StandardEditor<IdentityApplication> {
                         .saveInjectedProcessVariables()
                         .complete();
                 Objects.requireNonNull(identityDc.getItemOrNull()).setStatus(EClientStatus.ACTIVE);
+                addAfterCloseListener(el -> {
+                    events.publish(new UpdateEcpListEvent(this, userSession.getCurrentOrSubstitutedUser(), null, null));
+                });
                 closeWithCommit();
             } else {
                 notifications.create().withCaption(messageBundle.getMessage("errorWithECP"))
@@ -137,7 +143,10 @@ public class ClientAppHeadManager extends StandardEditor<IdentityApplication> {
 
     @Subscribe("close")
     public void onCloseClick(Button.ClickEvent event) {
-        closeWithDiscard();
+        addAfterCloseListener(el -> {
+            events.publish(new UpdateEcpListEvent(this, userSession.getCurrentOrSubstitutedUser(), null, null));
+        });
+        closeWithDefaultAction();
     }
 
 }

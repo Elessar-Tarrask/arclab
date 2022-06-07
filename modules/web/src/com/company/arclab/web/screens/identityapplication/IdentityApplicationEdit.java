@@ -2,6 +2,7 @@ package com.company.arclab.web.screens.identityapplication;
 
 import com.company.arclab.entity.application.EClientApplicationType;
 import com.company.arclab.entity.client.DocFormed;
+import com.company.arclab.event.UpdateEcpListEvent;
 import com.company.arclab.web.screens.BpmPanelCustomFragment;
 import com.company.arclab.web.screens.kalkan.KalkanSignaturesListTable;
 import com.haulmont.cuba.core.global.DataManager;
@@ -11,6 +12,7 @@ import com.haulmont.cuba.gui.model.InstanceContainer;
 import com.haulmont.cuba.gui.screen.*;
 import com.company.arclab.entity.application.IdentityApplication;
 import org.slf4j.Logger;
+import org.springframework.context.event.EventListener;
 
 import javax.inject.Inject;
 
@@ -72,4 +74,10 @@ public class IdentityApplicationEdit extends StandardEditor<IdentityApplication>
     public void updateECPListTable() {
         signatoryListFragment.setEntityId(getEditedEntity().getIdentity());
     }
+
+    @EventListener
+    public void readMessage(UpdateEcpListEvent event) {
+        updateECPListTable();
+    }
+
 }

@@ -92,7 +92,7 @@ public class KalkanSignaturesListTable extends ScreenFragment {
 
     @EventListener
     public void readMessage(UpdateEcpListEvent event) {
-        if (event.getCurrentUser().getLogin() != null) {
+        if (event.getCurrentUser() != null && event.getCurrentUser().getLogin() != null) {
             String receiverLogin = event.getCurrentUser().getLogin();
             String currentLogin = userSession.getUser().getLogin();
             if (receiverLogin.equals(currentLogin))
