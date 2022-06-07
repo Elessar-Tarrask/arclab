@@ -417,7 +417,7 @@ public class BpmPanelCustomFragment extends ScreenFragment {
     }
 
     private String getExceptionDescription(String info) {
-        String additionalBasicInfo = "Пожалуйста перезапустите шаг, а при повторении ошибки обратитесь в службу поддержки \n\n";
+        String additionalBasicInfo = "Пожалуйста перезапустите шаг \n\n";
         if (StringUtils.isEmpty(info))
             return null;
         String cause = StringUtils.substringBetween(info, "Caused by:", "at ");
@@ -575,7 +575,7 @@ public class BpmPanelCustomFragment extends ScreenFragment {
                         restartJobButton.setVisible(false);
                     }
 
-                    String additionalBasicInfo = "<span style=\"color:red\"><strong>Пожалуйста перезапустите шаг, а при повторении ошибки обратитесь в Техническую поддержку JCRM (Электронная почта <a href=\"mailto:CRMsupport@jusan.kz\">CRMsupport@jusan.kz</a> ,контактный телефон 500-4555)</strong></span> <br><br>";
+                    String additionalBasicInfo = "<span style=\"color:red\"><strong>Пожалуйста перезапустите шаг</strong></span> <br><br>";
                     applicationStatusField.setValue(getStatusLocalized(app));
                     infoField.setHtmlSanitizerEnabled(true);
                     infoField.setVisible(app.getInfo() != null);
@@ -593,7 +593,7 @@ public class BpmPanelCustomFragment extends ScreenFragment {
     }
 
     public void setInfoFieldError(String appInfo) {
-        String additionalBasicInfo = "<span style=\"color:red\"><strong>Пожалуйста перезапустите шаг, а при повторении ошибки обратитесь в Техническую поддержку JCRM (Электронная почта <a href=\"mailto:CRMsupport@jusan.kz\">CRMsupport@jusan.kz</a> ,контактный телефон 500-4555)</strong></span> <br><br>";
+        String additionalBasicInfo = "<span style=\"color:red\"><strong>Пожалуйста перезапустите шаг</strong></span> <br><br>";
         infoField.setHtmlSanitizerEnabled(true);
         infoField.setVisible(appInfo != null);
         infoField.setValue(additionalBasicInfo + appInfo);
